@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liquidity Sharks — Signal Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:   #0A0F1E;
+    --navy2:  #0F1629;
+    --navy3:  #151D35;
+    --gold:   #C9A84C;
+    --gold2:  #E2B96F;
+    --gold3:  #F0D49A;
+    --green:  #1E7E34;
+    --lgreen: #D4EDDA;
+    --red:    #B02020;
+    --lred:   #FCE8E8;
+    --white:  #FFFFFF;
+    --grey:   #8A9BB5;
+    --lgrey:  #1A2240;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── Background pattern ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 20% 10%, rgba(201,168,76,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 90%, rgba(201,168,76,0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 0 4rem;
+    position: relative;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--gold2);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    width: fit-content;
+  }
+
+  .hero-tag span {
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: 0.4; transform: scale(0.8); }
+  }
+
+  .hero-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 12vw, 120px);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-logo span {
+    color: var(--gold);
+    display: block;
+  }
+
+  .hero-sub {
+    font-size: clamp(16px, 3vw, 22px);
+    color: var(--grey);
+    font-weight: 300;
+    margin-bottom: 3rem;
+    max-width: 520px;
+  }
+
+  .hero-sub strong { color: var(--gold2); font-weight: 500; }
+
+  /* ── Gold divider ── */
+  .gold-line {
+    width: 60px; height: 3px;
+    background: var(--gold);
+    margin: 2.5rem 0;
+  }
+
+  /* ── Stat grid ── */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1px;
+    background: rgba(201,168,76,0.2);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 5rem;
+  }
+
+  .stat-card {
+    background: var(--navy2);
+    padding: 1.75rem 1.5rem;
+    text-align: center;
+    transition: background 0.2s;
+  }
+
+  .stat-card:hover { background: var(--navy3); }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 6vw, 52px);
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.02em;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--grey);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+  }
+
+  /* ── Sections ── */
+  .section { padding: 5rem 0; }
+
+  .section-tag {
+    font-size: 11px;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 6vw, 56px);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.02em;
+  }
+
+  .section-body {
+    font-size: 16px;
+    color: var(--grey);
+    max-width: 600px;
+    line-height: 1.8;
+  }
+
+  /* ── Performance cards ── */
+  .perf-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+
+  .perf-card {
+    background: var(--navy2);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 1.75rem;
+  }
+
+  .perf-card.gold-border { border-color: rgba(201,168,76,0.35); }
+
+  .perf-date {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+
+  .perf-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40px;
+    color: var(--gold2);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .perf-desc { font-size: 13px; color: var(--grey); }
+
+  /* ── Win rate bar ── */
+  .wr-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+
+  .wr-label { font-size: 13px; color: var(--grey); min-width: 90px; }
+
+  .wr-bar-wrap {
+    flex: 1;
+    height: 6px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+
+  .wr-bar {
+    height: 100%;
+    background: var(--gold);
+    border-radius: 100px;
+    transition: width 1.5s ease;
+  }
+
+  .wr-pct {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--gold2);
+    min-width: 42px;
+    text-align: right;
+  }
+
+  /* ── Trade log preview ── */
+  .trade-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+    font-size: 13px;
+  }
+
+  .trade-table th {
+    text-align: left;
+    padding: 10px 14px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--grey);
+    font-weight: 500;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .trade-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    color: rgba(255,255,255,0.85);
+    vertical-align: middle;
+  }
+
+  .trade-table tr:last-child td { border-bottom: none; }
+  .trade-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 500;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .badge.buy  { background: rgba(30,126,52,0.2);  color: #5EC97A; }
+  .badge.sell { background: rgba(176,32,32,0.2);   color: #F08080; }
+  .badge.win  { background: rgba(201,168,76,0.15); color: var(--gold2); }
+  .badge.sl   { background: rgba(176,32,32,0.15);  color: #F08080; }
+
+  .pips-pos { color: var(--gold2); font-family: 'DM Mono', monospace; font-weight: 500; }
+  .pips-neg { color: #F08080;      font-family: 'DM Mono', monospace; font-weight: 500; }
+
+  /* ── Session card ── */
+  .session-card {
+    background: var(--navy2);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 20px;
+    padding: 2.5rem;
+    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .clock-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .time-block {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .time-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .time-dot.active { background: var(--gold); box-shadow: 0 0 8px var(--gold); }
+  .time-dot.dim    { background: rgba(255,255,255,0.15); }
+
+  .time-text { font-size: 14px; color: var(--grey); }
+  .time-text strong { color: var(--white); font-weight: 500; }
+
+  .session-highlight {
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 12px;
+    padding: 1.25rem;
+  }
+
+  .session-highlight h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .session-highlight p { font-size: 13px; color: var(--grey); line-height: 1.6; }
+
+  /* ── Best days ── */
+  .best-days {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .day-card {
+    background: var(--navy2);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 14px;
+    padding: 1.25rem;
+  }
+
+  .day-card .rank {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: rgba(201,168,76,0.2);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .day-card .date-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--grey); margin-bottom: 0.5rem; }
+  .day-card .pips-big { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--gold2); }
+  .day-card .trades-small { font-size: 12px; color: var(--grey); }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: var(--navy2);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 24px;
+    padding: 4rem 3rem;
+    text-align: center;
+    margin: 2rem 0 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: 50%;
+    transform: translateX(-50%);
+    width: 300px; height: 200px;
+    background: radial-gradient(ellipse, rgba(201,168,76,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-section h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 6vw, 56px);
+    margin-bottom: 1rem;
+    letter-spacing: 0.02em;
+  }
+
+  .cta-section p { color: var(--grey); font-size: 16px; max-width: 480px; margin: 0 auto 2rem; }
+
+  .cta-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .cta-pill {
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 100px;
+    padding: 8px 18px;
+    font-size: 13px;
+    color: var(--gold2);
+    font-weight: 500;
+  }
+
+  .disclaimer {
+    font-size: 11px;
+    color: rgba(138,155,181,0.6);
+    padding: 2rem 0 1rem;
+    text-align: center;
+    line-height: 1.8;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--navy); }
+  ::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.3); border-radius: 2px; }
+
+  @media (max-width: 640px) {
+    .perf-grid { grid-template-columns: 1fr; }
+    .session-card { grid-template-columns: 1fr; }
+    .best-days { grid-template-columns: 1fr; }
+    .stat-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════ HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-tag"><span></span> Live Signal Provider · New York Session</div>
+    <div class="hero-logo">
+      Liquidity<span>Sharks</span>
+    </div>
+    <p class="hero-sub">
+      <strong>XAUUSD (Gold)</strong> signals with a documented <strong>80% win rate</strong> across 111 live trades — all tracked, all verified, Mar 23 to Jun 3, 2025.
+    </p>
+
+    <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom:3rem;">
+      <span class="cta-pill">🥇 10,150+ Pips Total</span>
+      <span class="cta-pill">📈 80% Win Rate</span>
+      <span class="cta-pill">⏰ NY Session Signals</span>
+      <span class="cta-pill">0️⃣ Red Months</span>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-num">111</div>
+        <div class="stat-label">Total Trades</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">80%</div>
+        <div class="stat-label">Win Rate</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">10,150</div>
+        <div class="stat-label">Total Pips</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">91.4</div>
+        <div class="stat-label">Avg Pips / Trade</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">89</div>
+        <div class="stat-label">Winning Trades</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">0</div>
+        <div class="stat-label">Red Months</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ WIN RATES -->
+<section class="section" style="background: var(--navy2);">
+  <div class="container">
+    <div class="section-tag">Performance Breakdown</div>
+    <div class="section-title">Win Rate By Category</div>
+    <p class="section-body">Consistent across direction, time, and market conditions.</p>
+
+    <div style="margin-top:2.5rem; max-width:560px;">
+      <div class="wr-row">
+        <span class="wr-label">Overall</span>
+        <div class="wr-bar-wrap"><div class="wr-bar" style="width:80%"></div></div>
+        <span class="wr-pct">80.0%</span>
+      </div>
+      <div class="wr-row">
+        <span class="wr-label">BUY trades</span>
+        <div class="wr-bar-wrap"><div class="wr-bar" style="width:78.9%"></div></div>
+        <span class="wr-pct">78.9%</span>
+      </div>
+      <div class="wr-row">
+        <span class="wr-label">SELL trades</span>
+        <div class="wr-bar-wrap"><div class="wr-bar" style="width:83.3%"></div></div>
+        <span class="wr-pct">83.3%</span>
+      </div>
+      <div class="wr-row">
+        <span class="wr-label">TP4 exits</span>
+        <div class="wr-bar-wrap"><div class="wr-bar" style="width:43%"></div></div>
+        <span class="wr-pct">43% of wins</span>
+      </div>
+      <div class="wr-row">
+        <span class="wr-label">Best 2 weeks</span>
+        <div class="wr-bar-wrap"><div class="wr-bar" style="width:93.8%"></div></div>
+        <span class="wr-pct">93.8%</span>
+      </div>
+    </div>
+
+    <div class="perf-grid" style="margin-top:3rem;">
+      <div class="perf-card gold-border">
+        <div class="perf-date">Trading Period</div>
+        <div class="perf-num">73 days</div>
+        <div class="perf-desc">Mar 23 – Jun 3, 2025 · All days profitable</div>
+      </div>
+      <div class="perf-card gold-border">
+        <div class="perf-date">Risk Management</div>
+        <div class="perf-num">Fixed SL</div>
+        <div class="perf-desc">Every signal has defined Stop Loss & 4 TP levels</div>
+      </div>
+      <div class="perf-card">
+        <div class="perf-date">Average pip gain</div>
+        <div class="perf-num">91.4</div>
+        <div class="perf-desc">Per trade across all 111 signals</div>
+      </div>
+      <div class="perf-card">
+        <div class="perf-date">Drawdown control</div>
+        <div class="perf-num">−70</div>
+        <div class="perf-desc">Fixed max loss per trade — no runaway losses</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ SESSION INFO -->
+<section class="section">
+  <div class="container">
+    <div class="section-tag">Session Coverage</div>
+    <div class="section-title">New York Session Specialist</div>
+    <p class="section-body">All signals are called live during the NY session — the highest-volume period for Gold. Entries typically between 2pm–8pm BST.</p>
+
+    <div class="session-card">
+      <div class="clock-visual">
+        <div class="time-block">
+          <div class="time-dot dim"></div>
+          <div class="time-text"><strong>London Open</strong> — 8am BST · Pre-session watch</div>
+        </div>
+        <div class="time-block">
+          <div class="time-dot dim"></div>
+          <div class="time-text"><strong>NY Pre-market</strong> — 1pm BST · Setup scanning</div>
+        </div>
+        <div class="time-block">
+          <div class="time-dot active"></div>
+          <div class="time-text"><strong>NY Session LIVE</strong> — 2pm–8pm BST · Signals active</div>
+        </div>
+        <div class="time-block">
+          <div class="time-dot dim"></div>
+          <div class="time-text"><strong>Late session</strong> — 8pm–10pm BST · Occasional setups</div>
+        </div>
+      </div>
+      <div class="session-highlight">
+        <h3>2pm – 6pm BST</h3>
+        <p>Peak performance window. 80%+ win rate. This is when London & New York overlap — maximum institutional volume, cleanest price action, sharpest entries.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ SIGNAL FORMAT -->
+<section class="section" style="background: var(--navy2);">
+  <div class="container">
+    <div class="section-tag">Signal Format</div>
+    <div class="section-title">Clear. Structured. Actionable.</div>
+    <p class="section-body">Every signal is delivered in a clean, consistent format with full entry, stop loss and 4 target levels. No ambiguity.</p>
+
+    <div style="margin-top:2.5rem; background:var(--navy); border:1px solid rgba(201,168,76,0.25); border-radius:16px; padding:2rem; max-width:460px;">
+      <div style="font-size:11px; text-transform:uppercase; letter-spacing:0.1em; color:var(--gold); margin-bottom:1.25rem; font-weight:500;">Sample Signal</div>
+      <div style="font-family:'DM Mono',monospace; font-size:14px; line-height:2; color:rgba(255,255,255,0.9);">
+        <div style="color:var(--gold2); font-weight:500; margin-bottom:0.5rem;">💡 TRADE IDEA ⤵️</div>
+        <div>📈 BUY XAUUSD (GOLD)</div>
+        <div>📍 Entry: <span style="color:var(--gold2);">4538 – 4540</span></div>
+        <div>🛑 Stop Loss: <span style="color:#F08080;">4532</span></div>
+        <div>🎯 TP1: 4542</div>
+        <div>🎯 TP2: 4544</div>
+        <div>🎯 TP3: 4546</div>
+        <div>🎯 TP4: <span style="color:var(--gold2);">4548</span></div>
+        <div>🎯 TP5: Open</div>
+        <div style="margin-top:1rem; padding-top:1rem; border-top:1px solid rgba(255,255,255,0.08); color:var(--gold); font-weight:500;">✅ Result: TP4 Hit · +550 pips</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ LIVE TRADE LOG -->
+<section class="section">
+  <div class="container">
+    <div class="section-tag">Verified Track Record</div>
+    <div class="section-title">Recent Signals Log</div>
+    <p class="section-body">A selection of recent documented trades — every entry, exit and result recorded from day one.</p>
+
+    <div style="overflow-x:auto; margin-top:0.5rem; border:1px solid rgba(255,255,255,0.06); border-radius:16px; background:var(--navy2);">
+      <table class="trade-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Direction</th>
+            <th>Entry</th>
+            <th>Result</th>
+            <th>Pips</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>May 21</td><td>5:28pm</td><td><span class="badge buy">BUY</span></td><td style="font-family:'DM Mono',monospace;">4514–4516</td><td><span class="badge win">TP4 Hit</span></td><td class="pips-pos">+290</td></tr>
+          <tr><td>May 21</td><td>8:12pm</td><td><span class="badge sell">SELL</span></td><td style="font-family:'DM Mono',monospace;">4535–4537</td><td><span class="badge win">TP4 Hit</span></td><td class="pips-pos">+90</td></tr>
+          <tr><td>May 20</td><td>2:47pm</td><td><span class="badge sell">SELL</span></td><td style="font-family:'DM Mono',monospace;">4489–4491</td><td><span class="badge win">TP4 Hit</span></td><td class="pips-pos">+230</td></tr>
+          <tr><td>May 20</td><td>7:35pm</td><td><span class="badge buy">BUY</span></td><td style="font-family:'DM Mono',monospace;">4538–4540</td><td><span class="badge win">TP4 Hit</span></td><td class="pips-pos">+110</td></tr>
+          <tr><td>May 19</td><td>3:44pm</td><td><span class="badge sell">SELL</span></td><td style="font-family:'DM Mono',monospace;">4495–4497</td><td><span class="badge win">TP4 Hit</span></td><td class="pips-pos">+100</td></tr>
+          <tr><td>May 19</td><td>3:26pm</td><td><span class="badge sell">SELL</span></td><td style="font-family:'DM Mono',monospace;">4486–4488</td><td><span class="badge sl">SL Hit</span></td><td class="pips-neg">−70</td></tr>
+          <tr><td>May 15</td><td>4:31pm</td><td><span class="badge sell">SELL</span></td><td style="font-family:'DM Mono',monospace;">4548–4550</td><td><span class="badge win">TP4 Hit</span></td><td class="pips-pos">+200</td></tr>
+          <tr><td>May 15</td><td>8:17pm</td><td><span class="badge sell">SELL</span></td><td style="font-family:'DM Mono',monospace;">4549–4551</td><td><span class="badge win">TP4 Hit</span></td><td class="pips-pos">+150</td></tr>
+          <tr><td>Apr 29</td><td>3:49pm</td><td><span class="badge buy">BUY</span></td><td style="font-family:'DM Mono',monospace;">4538–4540</td><td><span class="badge win">TP4 Hit</span></td><td class="pips-pos">+550</td></tr>
+          <tr><td>Apr 21</td><td>9:01pm</td><td><span class="badge sell">SELL</span></td><td style="font-family:'DM Mono',monospace;">4742–4744</td><td><span class="badge win">TP4 Hit</span></td><td class="pips-pos">+360</td></tr>
+          <tr><td>Apr 2</td><td>2:40pm</td><td><span class="badge buy">BUY</span></td><td style="font-family:'DM Mono',monospace;">4583–4586</td><td><span class="badge win">TP4 Hit</span></td><td class="pips-pos">+660</td></tr>
+          <tr><td>Mar 31</td><td>2:39pm</td><td><span class="badge buy">BUY</span></td><td style="font-family:'DM Mono',monospace;">4574–4576</td><td><span class="badge win">TP4 Hit</span></td><td class="pips-pos">+500</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:12px; color:var(--grey); margin-top:1rem;">Showing 12 of 111 documented trades. Full journal available on request.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ BEST DAYS -->
+<section class="section" style="background:var(--navy2);">
+  <div class="container">
+    <div class="section-tag">Top Performing Days</div>
+    <div class="section-title">Hall of Fame Sessions</div>
+    <p class="section-body">The top single-day performances — all live, all documented.</p>
+
+    <div class="best-days">
+      <div class="day-card">
+        <div class="rank">01</div>
+        <div class="date-label">April 2, 2025</div>
+        <div class="pips-big">+990</div>
+        <div class="trades-small">6 trades · 6 wins · 100% win rate</div>
+      </div>
+      <div class="day-card">
+        <div class="rank">02</div>
+        <div class="date-label">April 21, 2025</div>
+        <div class="pips-big">+610</div>
+        <div class="trades-small">3 trades · 3 wins · 100% win rate</div>
+      </div>
+      <div class="day-card">
+        <div class="rank">03</div>
+        <div class="date-label">May 15, 2025</div>
+        <div class="pips-big">+420</div>
+        <div class="trades-small">3 trades · 3 wins · 100% win rate</div>
+      </div>
+      <div class="day-card">
+        <div class="rank">04</div>
+        <div class="date-label">March 23, 2025</div>
+        <div class="pips-big">+560</div>
+        <div class="trades-small">4 trades · 4 wins · 100% win rate</div>
+      </div>
+      <div class="day-card">
+        <div class="rank">05</div>
+        <div class="date-label">May 29, 2025</div>
+        <div class="pips-big">+550</div>
+        <div class="trades-small">1 trade · 1 win · TP4 hit</div>
+      </div>
+      <div class="day-card">
+        <div class="rank">06</div>
+        <div class="date-label">April 9, 2025</div>
+        <div class="pips-big">+470</div>
+        <div class="trades-small">3 trades · 2 wins</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ WHAT YOU GET -->
+<section class="section">
+  <div class="container">
+    <div class="section-tag">What Members Get</div>
+    <div class="section-title">Every Signal. Every Detail.</div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1rem; margin-top:2rem;">
+      <div class="perf-card">
+        <div style="font-size:24px; margin-bottom:0.75rem;">📍</div>
+        <div style="font-size:14px; font-weight:500; margin-bottom:0.4rem;">Precise Entry Zones</div>
+        <div style="font-size:13px; color:var(--grey);">Tight 2–3 pip entry ranges, not vague levels.</div>
+      </div>
+      <div class="perf-card">
+        <div style="font-size:24px; margin-bottom:0.75rem;">🛑</div>
+        <div style="font-size:14px; font-weight:500; margin-bottom:0.4rem;">Fixed Stop Loss</div>
+        <div style="font-size:13px; color:var(--grey);">Every signal has a defined SL — max loss always known.</div>
+      </div>
+      <div class="perf-card">
+        <div style="font-size:24px; margin-bottom:0.75rem;">🎯</div>
+        <div style="font-size:14px; font-weight:500; margin-bottom:0.4rem;">4 Take Profit Levels</div>
+        <div style="font-size:13px; color:var(--grey);">TP1–TP4 on every signal. Scale out at your own pace.</div>
+      </div>
+      <div class="perf-card">
+        <div style="font-size:24px; margin-bottom:0.75rem;">📊</div>
+        <div style="font-size:14px; font-weight:500; margin-bottom:0.4rem;">Live Updates</div>
+        <div style="font-size:13px; color:var(--grey);">TP hits, SL calls, and trade management posted in real time.</div>
+      </div>
+      <div class="perf-card">
+        <div style="font-size:24px; margin-bottom:0.75rem;">📁</div>
+        <div style="font-size:14px; font-weight:500; margin-bottom:0.4rem;">Full Trade Journal</div>
+        <div style="font-size:13px; color:var(--grey);">Every trade documented since day 1 — full transparency.</div>
+      </div>
+      <div class="perf-card">
+        <div style="font-size:24px; margin-bottom:0.75rem;">⏰</div>
+        <div style="font-size:14px; font-weight:500; margin-bottom:0.4rem;">NY Session Focus</div>
+        <div style="font-size:13px; color:var(--grey);">Peak signals 2pm–8pm BST. Consistent timing, every day.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════ CTA -->
+<section style="padding: 0 0 2rem;">
+  <div class="container">
+    <div class="cta-section">
+      <h2>Ready to Partner?</h2>
+      <p>Add a verified, data-backed New York session signal provider to your group. Full journal available on request.</p>
+      <div class="cta-pills">
+        <span class="cta-pill">80% Win Rate · Documented</span>
+        <span class="cta-pill">10,150+ Pips · Verified</span>
+        <span class="cta-pill">111 Trades · Mar–Jun 2025</span>
+        <span class="cta-pill">XAUUSD Specialist</span>
+      </div>
+      <div style="font-size:13px; color:var(--grey);">Full trade journal available · References on request</div>
+    </div>
+
+    <p class="disclaimer">
+      For educational purposes only. Past performance is not indicative of future results.<br>
+      Trading involves risk. Only trade with funds you can afford to lose.<br>
+      Liquidity Sharks · XAUUSD · New York Session · 2025
+    </p>
+  </div>
+</section>
+
+</body>
+</html>
