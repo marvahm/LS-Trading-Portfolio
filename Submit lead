@@ -1,0 +1,76 @@
+<?php
+// ── CORS: only allow your GitHub Pages domain ─────────────────────────────
+header('Access-Control-Allow-Origin: https://marvahm.github.io');
+header('Access-Control-Allow-Methods: POST, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type');
+header('Content-Type: application/json');
+
+// Handle preflight
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit;
+}
+
+// Only accept POST
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(405);
+    echo json_encode(['ok' => false, 'error' => 'Method not allowed']);
+    exit;
+}
+
+// ── YOUR CONFIDENTIAL DETAILS (never visible to the public) ──────────────
+$TG_TOKEN   = '8845306916:AAGMbVfVmRuSVBZyR4YnzG53nn4WlNdH1cU';       // ← paste your BotFather token here
+$TG_CHAT_ID = '-1004287333946';           // ← your channel ID
+
+// ── Read and validate incoming JSON ──────────────────────────────────────
+$body = json_decode(file_get_contents('php://input'), true);
+
+$firstMsg = isset($body['firstMsg']) ? trim($body['firstMsg']) : '';
+$contact  = isset($body['contact'])  ? trim($body['contact'])  : '';
+
+if (empty($firstMsg) || empty($contact)) {
+    http_response_code(400);
+    echo json_encode(['ok' => false, 'error' => 'Missing fields']);
+    exit;
+}
+
+// ── Build the Telegram message ────────────────────────────────────────────
+$now = date('d/m/Y H:i', time());
+
+$text =
+    "🔔 New Lead — Aurex Dominion Website\n\n" .
+    "📩 Their Message:\n{$firstMsg}\n\n" .
+    "📞 Their Contact:\n{$contact}\n\n" .
+    "🕐 Time: {$now} GMT\n" .
+    "🌐 Source: Portfolio Website Chatbot";
+
+// ── Send to Telegram ──────────────────────────────────────────────────────
+$url  = "https://api.telegram.org/bot{$TG_TOKEN}/sendMessage";
+$data = json_encode(['chat_id' => $TG_CHAT_ID, 'text' => $text]);
+
+$ch = curl_init($url);
+curl_setopt_array($ch, [
+    CURLOPT_POST           => true,
+    CURLOPT_POSTFIELDS     => $data,
+    CURLOPT_HTTPHEADER     => ['Content-Type: application/json'],
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_TIMEOUT        => 10,
+]);
+$response = curl_exec($ch);
+$error    = curl_error($ch);
+curl_close($ch);
+
+if ($error) {
+    http_response_code(500);
+    echo json_encode(['ok' => false, 'error' => $error]);
+    exit;
+}
+
+$result = json_decode($response, true);
+
+if (!empty($result['ok'])) {
+    echo json_encode(['ok' => true]);
+} else {
+    http_response_code(500);
+    echo json_encode(['ok' => false, 'error' => $result['description'] ?? 'Unknown error']);
+}
