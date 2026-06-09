@@ -1180,7 +1180,7 @@ async function sendMessage() {
       1200
     );
 
-    // ── Send via Telegram Bot API (CORS-safe approach) ───────────────────
+    // ── Send via Telegram Bot API (CORS-safe) ────────────────────────────
     const TG_TOKEN   = '8845306916:AAGMbVfVmRuSVBZyR4YnzG53nn4WlNdH1cU';
     const TG_CHAT_ID = '7801796825';
 
@@ -1193,27 +1193,30 @@ async function sendMessage() {
       `🕐 Time: ${now}\n` +
       `🌐 Source: Portfolio Website Chatbot`;
 
-    // Use no-cors mode — request fires silently, no CORS error
-    // Telegram receives it even though we can't read the response
+    // Build the Telegram API URL
+    const tgUrl = `https://api.telegram.org/bot${TG_TOKEN}/sendMessage?chat_id=${encodeURIComponent(TG_CHAT_ID)}&text=${encodeURIComponent(tgText)}`;
+
+    // Method 1: Direct fetch with proper headers
     try {
-      const url = `https://api.telegram.org/bot${TG_TOKEN}/sendMessage`;
-      const params = new URLSearchParams({
-        chat_id: TG_CHAT_ID,
-        text: tgText
-      });
-      // Try standard fetch first
-      fetch(url, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: params,
-        mode: 'no-cors'
-      });
-      // Also fire as GET via image beacon (100% CORS-safe backup)
-      const beaconUrl = `${url}?chat_id=${encodeURIComponent(TG_CHAT_ID)}&text=${encodeURIComponent(tgText)}`;
-      new Image().src = beaconUrl;
-      console.log('Lead notification fired to Telegram ✓');
+      const res = await fetch(tgUrl, { method: 'GET' });
+      const json = await res.json();
+      if (json.ok) {
+        console.log('✅ Telegram message sent!');
+        return;
+      }
+      console.warn('Telegram error:', json);
     } catch(e) {
-      console.warn('Telegram send failed:', e);
+      console.warn('Direct fetch failed, trying proxy...', e.message);
+    }
+
+    // Method 2: CORS proxy fallback
+    try {
+      const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(tgUrl)}`;
+      const res2 = await fetch(proxyUrl);
+      const json2 = await res2.json();
+      console.log('Proxy response:', json2.contents?.substring(0, 100));
+    } catch(e2) {
+      console.warn('Proxy also failed:', e2.message);
     }
   }
 }
