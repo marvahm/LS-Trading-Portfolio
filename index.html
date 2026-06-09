@@ -7,91 +7,41 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 :root {
-  --navy:  #080D1A;
-  --navy2: #0E1526;
-  --navy3: #141D33;
-  --gold:  #C9A84C;
-  --gold2: #E2B96F;
-  --gold3: #F0D49A;
-  --grey:  #7A8BA8;
-  --white: #FFFFFF;
+  --navy:  #080D1A; --navy2: #0E1526; --navy3: #141D33;
+  --gold:  #C9A84C; --gold2: #E2B96F; --gold3: #F0D49A;
+  --grey:  #7A8BA8; --white: #FFFFFF;
 }
-
 html { scroll-behavior: smooth; }
-
-body {
-  background: var(--navy);
-  color: var(--white);
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 400;
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-
+body { background: var(--navy); color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 400; line-height: 1.6; overflow-x: hidden; }
 .wrap { width: 100%; max-width: 960px; margin: 0 auto; padding: 0 2rem; }
-
-.hero { text-align: center; padding: 100px 2rem 80px; position: relative; }
-
-.live-pill {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3);
-  border-radius: 100px; padding: 6px 18px; font-size: 11px; font-weight: 600;
-  color: var(--gold2); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2rem;
-}
-
+.hero { text-align: center; padding: 140px 2rem 80px; position: relative; }
+.live-pill { display: inline-flex; align-items: center; gap: 8px; background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3); border-radius: 100px; padding: 6px 18px; font-size: 11px; font-weight: 600; color: var(--gold2); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2rem; }
 .live-dot { width: 7px; height: 7px; background: var(--gold); border-radius: 50%; animation: blink 2s infinite; }
-
 @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
-
-.hero-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(72px, 14vw, 140px);
-  line-height: 0.88; letter-spacing: 0.03em; color: var(--white); margin-bottom: 1rem;
-}
+.hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(72px, 14vw, 140px); line-height: 0.88; letter-spacing: 0.03em; color: var(--white); margin-bottom: 1rem; }
 .hero-title .gold { color: var(--gold); }
-
-.hero-subtitle {
-  font-size: clamp(15px, 2.5vw, 19px); color: var(--grey); font-weight: 300;
-  max-width: 540px; margin: 0 auto 2.5rem; line-height: 1.7;
-}
+.hero-subtitle { font-size: clamp(15px, 2.5vw, 19px); color: var(--grey); font-weight: 300; max-width: 540px; margin: 0 auto 2.5rem; line-height: 1.7; }
 .hero-subtitle strong { color: var(--gold2); font-weight: 500; }
-
-.stats-bar {
-  display: grid; grid-template-columns: repeat(6, 1fr);
-  border: 1px solid rgba(201,168,76,0.2); border-radius: 20px; overflow: hidden;
-  background: rgba(201,168,76,0.06); margin: 3rem auto 0; max-width: 900px;
-}
+.stats-bar { display: grid; grid-template-columns: repeat(6, 1fr); border: 1px solid rgba(201,168,76,0.2); border-radius: 20px; overflow: hidden; background: rgba(201,168,76,0.06); margin: 3rem auto 0; max-width: 900px; }
 .stat-item { padding: 1.5rem 1rem; text-align: center; border-right: 1px solid rgba(201,168,76,0.1); }
 .stat-item:last-child { border-right: none; }
 .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: clamp(28px, 4vw, 46px); color: var(--gold); line-height: 1; margin-bottom: 4px; }
 .stat-label { font-size: 10px; color: var(--grey); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500; }
-
 .section { padding: 80px 2rem; text-align: center; }
 .section.dark { background: var(--navy2); }
 .sec-tag { font-size: 11px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.15em; font-weight: 600; margin-bottom: 0.6rem; }
 .sec-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 7vw, 68px); line-height: 0.95; letter-spacing: 0.02em; margin-bottom: 1rem; }
 .sec-body { font-size: 16px; color: var(--grey); max-width: 540px; margin: 0 auto 2.5rem; line-height: 1.8; font-weight: 300; }
 .gold-rule { width: 48px; height: 3px; background: var(--gold); margin: 1.5rem auto; border-radius: 2px; }
-
 .wr-table { max-width: 560px; margin: 0 auto; text-align: left; }
 .wr-row { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
 .wr-label { font-size: 13px; color: var(--grey); width: 130px; flex-shrink: 0; }
 .wr-track { flex: 1; height: 5px; background: rgba(255,255,255,0.07); border-radius: 100px; overflow: hidden; }
 .wr-fill { height: 100%; background: var(--gold); border-radius: 100px; }
 .wr-pct { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--gold2); width: 50px; text-align: right; flex-shrink: 0; }
-
 .card-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.07); border-radius: 18px; overflow: hidden; max-width: 900px; margin: 0 auto; }
-.card-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 900px; margin: 0 auto; }
-.card-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 900px; margin: 0 auto; }
 .mini-card { background: var(--navy2); padding: 1.5rem; text-align: center; }
-.box-card { background: var(--navy2); border: 1px solid rgba(255,255,255,0.07); border-radius: 18px; padding: 1.75rem; text-align: left; }
-.box-card.gold { border-color: rgba(201,168,76,0.3); }
-.box-num { font-family: 'Bebas Neue', sans-serif; font-size: 38px; color: var(--gold2); line-height: 1; margin-bottom: 4px; }
-.box-label { font-size: 11px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500; margin-bottom: 0.75rem; }
-.box-desc { font-size: 13px; color: var(--grey); line-height: 1.6; }
-
 .session-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 860px; margin: 0 auto; text-align: left; }
 .times-list { display: flex; flex-direction: column; gap: 14px; }
 .time-row { display: flex; align-items: center; gap: 14px; }
@@ -103,14 +53,12 @@ body {
 .highlight-box { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.3); border-radius: 16px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: center; }
 .highlight-box h3 { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: var(--gold); margin-bottom: 0.5rem; line-height: 1; }
 .highlight-box p { font-size: 13px; color: var(--grey); line-height: 1.7; }
-
 .signal-wrap { max-width: 420px; margin: 0 auto; background: var(--navy2); border: 1px solid rgba(201,168,76,0.25); border-radius: 18px; padding: 2rem; text-align: left; }
 .signal-head { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); font-weight: 600; margin-bottom: 1.25rem; }
 .signal-body { font-family: 'DM Mono', monospace; font-size: 14px; line-height: 2.1; color: rgba(255,255,255,0.88); }
 .signal-body .em { color: var(--gold2); font-weight: 500; }
 .signal-body .bad { color: #F08080; }
 .signal-result { margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,0.08); font-family: 'DM Mono', monospace; font-size: 14px; color: var(--gold); font-weight: 500; }
-
 .table-wrap { max-width: 900px; margin: 0 auto; overflow-x: auto; border: 1px solid rgba(255,255,255,0.06); border-radius: 18px; background: var(--navy2); }
 table { width: 100%; border-collapse: collapse; font-size: 13px; }
 th { text-align: left; padding: 12px 16px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--grey); font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.06); }
@@ -125,43 +73,17 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 .pos  { color: var(--gold2); font-family: 'DM Mono', monospace; font-weight: 500; }
 .neg  { color: #F08080; font-family: 'DM Mono', monospace; font-weight: 500; }
 .mono { font-family: 'DM Mono', monospace; }
-
 .days-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 860px; margin: 0 auto; }
 .day-card { background: var(--navy2); border: 1px solid rgba(255,255,255,0.07); border-radius: 16px; padding: 1.5rem; text-align: left; }
 .day-rank { font-family: 'Bebas Neue', sans-serif; font-size: 52px; color: rgba(201,168,76,0.15); line-height: 1; margin-bottom: 4px; }
 .day-date { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--grey); margin-bottom: 6px; font-weight: 500; }
 .day-pips { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: var(--gold2); line-height: 1; }
 .day-meta { font-size: 12px; color: var(--grey); margin-top: 4px; }
-
 .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 860px; margin: 0 auto; }
 .feat-card { background: var(--navy2); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 1.5rem; text-align: left; }
 .feat-icon { font-size: 22px; margin-bottom: 0.75rem; }
 .feat-title { font-size: 14px; font-weight: 600; margin-bottom: 0.4rem; }
 .feat-desc { font-size: 13px; color: var(--grey); line-height: 1.6; }
-
-.cta-wrap { max-width: 860px; margin: 0 auto; background: var(--navy2); border: 1px solid rgba(201,168,76,0.3); border-radius: 24px; padding: 4rem 3rem; text-align: center; }
-.cta-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(42px, 7vw, 72px); line-height: 0.95; margin-bottom: 1rem; }
-.cta-sub { color: var(--grey); font-size: 16px; max-width: 440px; margin: 0 auto 2rem; font-weight: 300; }
-
-.pills { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 2rem; }
-.pill { background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.25); border-radius: 100px; padding: 7px 18px; font-size: 13px; color: var(--gold2); font-weight: 500; }
-
-.disclaimer { font-size: 11px; color: rgba(120,140,170,0.5); text-align: center; padding: 2rem; line-height: 1.9; border-top: 1px solid rgba(255,255,255,0.05); max-width: 620px; margin: 0 auto; }
-
-@media (max-width: 700px) {
-  .stats-bar    { grid-template-columns: repeat(3,1fr); }
-  .card-grid-4  { grid-template-columns: repeat(2,1fr); }
-  .card-grid-3  { grid-template-columns: 1fr; }
-  .card-grid-2  { grid-template-columns: 1fr; }
-  .session-wrap { grid-template-columns: 1fr; }
-  .days-grid    { grid-template-columns: repeat(2,1fr); }
-  .feat-grid    { grid-template-columns: 1fr; }
-  .cta-wrap     { padding: 2.5rem 1.5rem; }
-  .steps-wrap   { flex-direction: column; }
-  .step-arrow   { transform: rotate(90deg); }
-  .contact-grid { grid-template-columns: 1fr; }
-}
-
 .steps-wrap { display: flex; align-items: center; gap: 1rem; max-width: 860px; margin: 0 auto 2rem; }
 .step-card { flex: 1; background: var(--navy); border: 1px solid rgba(201,168,76,0.2); border-radius: 18px; padding: 1.75rem; text-align: center; }
 .step-num { font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: rgba(201,168,76,0.25); line-height: 1; margin-bottom: 0.5rem; }
@@ -169,9 +91,8 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 .step-desc { font-size: 13px; color: var(--grey); line-height: 1.6; }
 .step-arrow { font-size: 24px; color: rgba(201,168,76,0.4); flex-shrink: 0; }
 .integration-badge { display: inline-flex; align-items: center; gap: 10px; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2); border-radius: 100px; padding: 10px 24px; font-size: 13px; color: var(--gold2); font-weight: 500; margin-top: 1rem; }
-
 .pricing-wrap { max-width: 520px; margin: 0 auto; }
-.price-card { background: var(--navy2); border: 2px solid rgba(201,168,76,0.4); border-radius: 24px; padding: 2.5rem; text-align: center; position: relative; }
+.price-card { background: var(--navy2); border: 2px solid rgba(201,168,76,0.4); border-radius: 24px; padding: 2.5rem; text-align: center; }
 .price-tag { display: inline-block; background: var(--gold); color: var(--navy); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; padding: 5px 18px; border-radius: 100px; margin-bottom: 1.5rem; }
 .price-amount { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: var(--white); line-height: 1.1; margin-bottom: 0.25rem; }
 .price-amount span { font-size: 52px; color: var(--gold); display: block; }
@@ -180,9 +101,8 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 .price-list li { font-size: 14px; color: rgba(255,255,255,0.8); padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.05); line-height: 1.5; }
 .price-list li:last-child { border-bottom: none; }
 .price-note { font-size: 13px; color: var(--gold2); font-weight: 500; margin-top: 0.5rem; }
-
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 700px; margin: 0 auto; }
-.contact-card { display: flex; align-items: center; gap: 1.25rem; padding: 1.5rem 1.75rem; border-radius: 18px; text-decoration: none; border: 1px solid rgba(255,255,255,0.08); transition: transform 0.2s, border-color 0.2s; }
+.contact-card { display: flex; align-items: center; gap: 1.25rem; padding: 1.5rem 1.75rem; border-radius: 18px; text-decoration: none; border: 1px solid rgba(255,255,255,0.08); transition: transform 0.2s; }
 .contact-card:hover { transform: translateY(-2px); }
 .contact-card.whatsapp { background: rgba(37,211,102,0.08); border-color: rgba(37,211,102,0.25); }
 .contact-card.telegram { background: rgba(42,174,226,0.08); border-color: rgba(42,174,226,0.25); }
@@ -193,7 +113,10 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 .contact-platform { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--grey); font-weight: 600; margin-bottom: 3px; }
 .contact-number { font-family: 'DM Mono', monospace; font-size: 16px; color: var(--white); font-weight: 500; margin-bottom: 3px; }
 .contact-cta { font-size: 12px; color: var(--grey); }
-
+.pills { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 2rem; }
+.pill { background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.25); border-radius: 100px; padding: 7px 18px; font-size: 13px; color: var(--gold2); font-weight: 500; }
+.disclaimer { font-size: 11px; color: rgba(120,140,170,0.5); text-align: center; padding: 2rem; line-height: 1.9; border-top: 1px solid rgba(255,255,255,0.05); max-width: 620px; margin: 0 auto; }
+/* NAVBAR */
 .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 999; display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 64px; background: rgba(8,13,26,0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(201,168,76,0.12); }
 .nav-brand { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.06em; color: var(--white); }
 .nav-brand span { color: var(--gold); }
@@ -202,16 +125,14 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 .nav-chat-btn:hover { background: rgba(201,168,76,0.2); transform: translateY(-1px); }
 .nav-contact-btn { display: flex; align-items: center; gap: 8px; background: var(--gold); color: var(--navy); font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 700; padding: 9px 20px; border-radius: 100px; cursor: pointer; transition: background 0.2s, transform 0.15s; text-decoration: none; border: none; }
 .nav-contact-btn:hover { background: var(--gold2); transform: translateY(-1px); }
-
+/* CHATBOT */
 .chat-bubble { position: fixed; bottom: 28px; right: 28px; width: 56px; height: 56px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1000; box-shadow: 0 4px 20px rgba(201,168,76,0.4); transition: transform 0.2s, box-shadow 0.2s; border: none; }
 .chat-bubble:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(201,168,76,0.55); }
 .chat-bubble svg { color: var(--navy); }
 .chat-bubble .chat-badge { position: absolute; top: -3px; right: -3px; width: 16px; height: 16px; background: #25D366; border-radius: 50%; border: 2px solid var(--navy); animation: blink 2s infinite; }
-
-.chat-window { position: fixed; bottom: 96px; right: 28px; width: 360px; background: var(--navy2); border: 1px solid rgba(201,168,76,0.25); border-radius: 20px; overflow: hidden; z-index: 1000; box-shadow: 0 16px 48px rgba(0,0,0,0.5); display: none; flex-direction: column; animation: slideUp 0.25s ease; }
-.chat-window.open { display: flex; }
+.chat-window { position: fixed; bottom: 96px; right: 28px; width: 360px; background: var(--navy2); border: 1px solid rgba(201,168,76,0.25); border-radius: 20px; overflow: hidden; z-index: 1000; box-shadow: 0 16px 48px rgba(0,0,0,0.5); display: none; flex-direction: column; }
+.chat-window.open { display: flex; animation: slideUp 0.25s ease; }
 @keyframes slideUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-
 .chat-header { background: var(--navy); border-bottom: 1px solid rgba(201,168,76,0.15); padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between; }
 .chat-header-left { display: flex; align-items: center; gap: 12px; }
 .chat-avatar { width: 40px; height: 40px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 16px; color: var(--navy); flex-shrink: 0; }
@@ -220,16 +141,12 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 .chat-status::before { content: ''; width: 6px; height: 6px; background: #25D366; border-radius: 50%; display: inline-block; }
 .chat-close { background: none; border: none; color: var(--grey); cursor: pointer; font-size: 18px; line-height: 1; padding: 4px; transition: color 0.15s; }
 .chat-close:hover { color: var(--white); }
-
 .chat-messages { padding: 1.25rem; display: flex; flex-direction: column; gap: 10px; max-height: 280px; overflow-y: auto; }
 .chat-msg { display: flex; gap: 8px; align-items: flex-start; }
 .msg-avatar { width: 28px; height: 28px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 11px; color: var(--navy); flex-shrink: 0; margin-top: 2px; }
 .msg-bubble { background: rgba(255,255,255,0.06); border-radius: 0 14px 14px 14px; padding: 10px 14px; font-size: 13px; color: rgba(255,255,255,0.88); line-height: 1.6; max-width: 260px; }
 .msg-bubble.user-msg { background: rgba(201,168,76,0.15); border-radius: 14px 0 14px 14px; color: var(--gold3); margin-left: auto; }
 .msg-time { font-size: 10px; color: var(--grey); margin-top: 3px; }
-.chat-reply { background: rgba(37,211,102,0.08); border: 1px solid rgba(37,211,102,0.2); border-radius: 14px; padding: 10px 14px; font-size: 13px; color: rgba(255,255,255,0.88); line-height: 1.6; display: none; }
-.chat-reply.show { display: block; }
-
 .chat-input-area { padding: 1rem 1.25rem; border-top: 1px solid rgba(255,255,255,0.06); display: flex; gap: 8px; }
 .chat-input { flex: 1; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 100px; padding: 9px 16px; font-size: 13px; color: var(--white); font-family: 'DM Sans', sans-serif; outline: none; transition: border-color 0.2s; }
 .chat-input::placeholder { color: var(--grey); }
@@ -237,14 +154,21 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 .chat-send { width: 38px; height: 38px; background: var(--gold); border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s, transform 0.15s; flex-shrink: 0; }
 .chat-send:hover { background: var(--gold2); transform: scale(1.05); }
 .chat-footer { text-align: center; font-size: 10px; color: var(--grey); padding: 0 1.25rem 0.75rem; }
-
-.hero { padding-top: 140px; }
-
 .typing-dots { display:inline-flex; gap:4px; align-items:center; }
 .typing-dots span { width:7px; height:7px; background: rgba(255,255,255,0.35); border-radius:50%; animation: tdot 1.2s infinite; }
 .typing-dots span:nth-child(2) { animation-delay:0.2s; }
 .typing-dots span:nth-child(3) { animation-delay:0.4s; }
 @keyframes tdot { 0%,80%,100% { transform:scale(0.6); opacity:0.4; } 40% { transform:scale(1); opacity:1; } }
+@media (max-width: 700px) {
+  .stats-bar    { grid-template-columns: repeat(3,1fr); }
+  .card-grid-4  { grid-template-columns: repeat(2,1fr); }
+  .session-wrap { grid-template-columns: 1fr; }
+  .days-grid    { grid-template-columns: repeat(2,1fr); }
+  .feat-grid    { grid-template-columns: 1fr; }
+  .steps-wrap   { flex-direction: column; }
+  .step-arrow   { transform: rotate(90deg); }
+  .contact-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
@@ -264,13 +188,13 @@ tr:hover td { background: rgba(255,255,255,0.02); }
   </div>
 </nav>
 
-<!-- CHATBOT BUBBLE -->
+<!-- CHAT BUBBLE -->
 <button class="chat-bubble" onclick="toggleChat()" aria-label="Open chat">
   <div class="chat-badge"></div>
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
 </button>
 
-<!-- CHATBOT WINDOW -->
+<!-- CHAT WINDOW -->
 <div class="chat-window" id="chatWindow">
   <div class="chat-header">
     <div class="chat-header-left">
@@ -305,7 +229,9 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 </div>
 
 <script>
-const PHONE = '447843903736';
+// ── IMPORTANT: change this to your backend URL once deployed ──────────────
+const BACKEND_URL = 'https://yourdomain.com/submit-lead.php';
+
 let chatStep = 0;
 let userFirstMsg = '';
 let userContact  = '';
@@ -330,7 +256,6 @@ function addBotMsg(html, delay = 1000) {
       </div></div>`;
     document.getElementById('chatMessages').appendChild(typing);
     document.getElementById('chatMessages').scrollTop = 99999;
-
     setTimeout(() => {
       const t = document.getElementById('typing-indicator');
       if (t) t.remove();
@@ -357,15 +282,10 @@ function addUserMsg(text) {
   document.getElementById('chatMessages').scrollTop = 99999;
 }
 
-function updatePlaceholder(text) {
-  document.getElementById('chatInput').placeholder = text;
-}
-
 async function sendMessage() {
   const input = document.getElementById('chatInput');
   const msg = input.value.trim();
   if (!msg) return;
-
   addUserMsg(msg);
   input.value = '';
 
@@ -378,7 +298,7 @@ async function sendMessage() {
       To make sure we can reach you, could you please share your <strong>WhatsApp number</strong> or <strong>email address</strong>? 📲`,
       1300
     );
-    updatePlaceholder('Your WhatsApp number or email...');
+    document.getElementById('chatInput').placeholder = 'Your WhatsApp number or email...';
   }
 
   else if (chatStep === 1) {
@@ -398,37 +318,21 @@ async function sendMessage() {
       1200
     );
 
-    // ── Telegram Notification ─────────────────────────────────────────────
-    // IMPORTANT: Replace YOUR_NEW_BOT_TOKEN with your token from BotFather
-    const TG_TOKEN   = '8845306916:AAGMbVfVmRuSVBZyR4YnzG53nn4WlNdH1cU';
-    const TG_CHAT_ID = '-1004287333946';
-
-    const now = new Date().toLocaleString('en-GB', { timeZone: 'Europe/London' });
-
-    const tgText =
-      `🔔 New Lead — Aurex Dominion Website\n\n` +
-      `📩 Their Message:\n${userFirstMsg}\n\n` +
-      `📞 Their Contact:\n${userContact}\n\n` +
-      `🕐 Time: ${now}\n` +
-      `🌐 Source: Portfolio Website Chatbot`;
-
+    // ── Call the secure backend — token never exposed here ────────────────
     try {
-      const res = await fetch(
-        `https://api.telegram.org/bot${TG_TOKEN}/sendMessage`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ chat_id: TG_CHAT_ID, text: tgText })
-        }
-      );
-      const json = await res.json();
-      if (json.ok) {
-        console.log('✅ Telegram message sent!');
+      const res = await fetch(BACKEND_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ firstMsg: userFirstMsg, contact: userContact })
+      });
+      const data = await res.json();
+      if (data.ok) {
+        console.log('✅ Lead sent successfully');
       } else {
-        console.warn('Telegram error:', json);
+        console.warn('Backend error:', data.error);
       }
     } catch(e) {
-      console.warn('Telegram send failed:', e.message);
+      console.warn('Failed to reach backend:', e.message);
     }
   }
 }
@@ -438,9 +342,7 @@ async function sendMessage() {
 <section class="hero">
   <div class="live-pill"><div class="live-dot"></div>Live Signal Provider · New York Session</div>
   <div class="hero-title">Aurex<br><span class="gold">Dominion</span></div>
-  <p class="hero-subtitle">
-    <strong>XAUUSD (Gold)</strong> signals with a documented <strong>82% win rate</strong> — 121 live trades, fully tracked from March to June 2025.
-  </p>
+  <p class="hero-subtitle"><strong>XAUUSD (Gold)</strong> signals with a documented <strong>82% win rate</strong> — 121 live trades, fully tracked from March to June 2025.</p>
   <div class="stats-bar">
     <div class="stat-item"><div class="stat-num">121</div><div class="stat-label">Trades</div></div>
     <div class="stat-item"><div class="stat-num">82%</div><div class="stat-label">Win Rate</div></div>
@@ -506,9 +408,7 @@ async function sendMessage() {
       <div>📈 BUY XAUUSD (GOLD)</div>
       <div>📍 Entry: <span class="em">4538 – 4540</span></div>
       <div>🛑 Stop Loss: <span class="bad">4532</span></div>
-      <div>🎯 TP1: 4542</div>
-      <div>🎯 TP2: 4544</div>
-      <div>🎯 TP3: 4546</div>
+      <div>🎯 TP1: 4542</div><div>🎯 TP2: 4544</div><div>🎯 TP3: 4546</div>
       <div>🎯 TP4: <span class="em">4548</span></div>
       <div>🎯 TP5: Open</div>
     </div>
@@ -524,9 +424,7 @@ async function sendMessage() {
   <p class="sec-body">A selection of documented trades — every entry, exit and result recorded from day one. Full journal available on request.</p>
   <div class="table-wrap">
     <table>
-      <thead>
-        <tr><th>Date</th><th>Time (BST)</th><th>Direction</th><th>Entry</th><th>Result</th><th>Pips</th></tr>
-      </thead>
+      <thead><tr><th>Date</th><th>Time (BST)</th><th>Direction</th><th>Entry</th><th>Result</th><th>Pips</th></tr></thead>
       <tbody>
         <tr><td>May 21</td><td>5:28pm</td><td><span class="badge buy">BUY</span></td><td class="mono">4514–4516</td><td><span class="badge win">TP4 Hit</span></td><td class="pos">+290</td></tr>
         <tr><td>May 21</td><td>8:12pm</td><td><span class="badge sell">SELL</span></td><td class="mono">4535–4537</td><td><span class="badge win">TP4 Hit</span></td><td class="pos">+90</td></tr>
@@ -590,10 +488,7 @@ async function sendMessage() {
     <div class="step-arrow">→</div>
     <div class="step-card"><div class="step-num">03</div><div class="step-title">Signals go live</div><div class="step-desc">Your members receive live NY session XAUUSD signals directly in your existing Telegram channel.</div></div>
   </div>
-  <div class="integration-badge">
-    <span>🤖</span>
-    <span>Automatic setup · No technical knowledge required · Your channel stays yours</span>
-  </div>
+  <div class="integration-badge"><span>🤖</span><span>Automatic setup · No technical knowledge required · Your channel stays yours</span></div>
 </section>
 
 <!-- PRICING -->
@@ -601,7 +496,7 @@ async function sendMessage() {
   <div class="sec-tag">Transparent Pricing</div>
   <div class="sec-title">Fixed Monthly Rate</div>
   <div class="gold-rule"></div>
-  <p class="sec-body">One flat monthly fee. No hidden costs, no per-signal charges, no revenue splits. Just consistent, professional signals delivered to your channel every trading day.</p>
+  <p class="sec-body">One flat monthly fee. No hidden costs, no per-signal charges, no revenue splits.</p>
   <div class="pricing-wrap">
     <div class="price-card">
       <div class="price-tag">Monthly Partnership</div>
@@ -639,7 +534,6 @@ async function sendMessage() {
         <div class="contact-cta">Tap to message →</div>
       </div>
     </a>
-    <!-- FIX: t.me links don't work with phone numbers — use your Telegram username instead -->
     <a class="contact-card telegram" href="https://t.me/AurexDominion" target="_blank">
       <div class="contact-icon">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
