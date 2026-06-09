@@ -30,506 +30,123 @@ body {
   overflow-x: hidden;
 }
 
-/* ── LAYOUT ── */
-.wrap {
-  width: 100%;
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
+.wrap { width: 100%; max-width: 960px; margin: 0 auto; padding: 0 2rem; }
 
-/* ── HERO ── */
-.hero {
-  text-align: center;
-  padding: 100px 2rem 80px;
-  position: relative;
-}
+.hero { text-align: center; padding: 100px 2rem 80px; position: relative; }
 
 .live-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(201,168,76,0.1);
-  border: 1px solid rgba(201,168,76,0.3);
-  border-radius: 100px;
-  padding: 6px 18px;
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--gold2);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  margin-bottom: 2rem;
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 100px; padding: 6px 18px; font-size: 11px; font-weight: 600;
+  color: var(--gold2); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2rem;
 }
 
-.live-dot {
-  width: 7px; height: 7px;
-  background: var(--gold);
-  border-radius: 50%;
-  animation: blink 2s infinite;
-}
+.live-dot { width: 7px; height: 7px; background: var(--gold); border-radius: 50%; animation: blink 2s infinite; }
 
-@keyframes blink {
-  0%,100% { opacity:1; } 50% { opacity:0.3; }
-}
+@keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
 
 .hero-title {
   font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(72px, 14vw, 140px);
-  line-height: 0.88;
-  letter-spacing: 0.03em;
-  color: var(--white);
-  margin-bottom: 1rem;
+  line-height: 0.88; letter-spacing: 0.03em; color: var(--white); margin-bottom: 1rem;
 }
-
 .hero-title .gold { color: var(--gold); }
 
 .hero-subtitle {
-  font-size: clamp(15px, 2.5vw, 19px);
-  color: var(--grey);
-  font-weight: 300;
-  max-width: 540px;
-  margin: 0 auto 2.5rem;
-  line-height: 1.7;
+  font-size: clamp(15px, 2.5vw, 19px); color: var(--grey); font-weight: 300;
+  max-width: 540px; margin: 0 auto 2.5rem; line-height: 1.7;
 }
-
 .hero-subtitle strong { color: var(--gold2); font-weight: 500; }
 
-/* ── HERO STATS BAR ── */
 .stats-bar {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  border: 1px solid rgba(201,168,76,0.2);
-  border-radius: 20px;
-  overflow: hidden;
-  background: rgba(201,168,76,0.06);
-  margin: 3rem auto 0;
-  max-width: 900px;
+  display: grid; grid-template-columns: repeat(6, 1fr);
+  border: 1px solid rgba(201,168,76,0.2); border-radius: 20px; overflow: hidden;
+  background: rgba(201,168,76,0.06); margin: 3rem auto 0; max-width: 900px;
 }
-
-.stat-item {
-  padding: 1.5rem 1rem;
-  text-align: center;
-  border-right: 1px solid rgba(201,168,76,0.1);
-}
-
+.stat-item { padding: 1.5rem 1rem; text-align: center; border-right: 1px solid rgba(201,168,76,0.1); }
 .stat-item:last-child { border-right: none; }
+.stat-num { font-family: 'Bebas Neue', sans-serif; font-size: clamp(28px, 4vw, 46px); color: var(--gold); line-height: 1; margin-bottom: 4px; }
+.stat-label { font-size: 10px; color: var(--grey); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500; }
 
-.stat-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(28px, 4vw, 46px);
-  color: var(--gold);
-  line-height: 1;
-  margin-bottom: 4px;
-}
-
-.stat-label {
-  font-size: 10px;
-  color: var(--grey);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 500;
-}
-
-/* ── SECTION WRAPPER ── */
-.section {
-  padding: 80px 2rem;
-  text-align: center;
-}
-
+.section { padding: 80px 2rem; text-align: center; }
 .section.dark { background: var(--navy2); }
+.sec-tag { font-size: 11px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.15em; font-weight: 600; margin-bottom: 0.6rem; }
+.sec-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 7vw, 68px); line-height: 0.95; letter-spacing: 0.02em; margin-bottom: 1rem; }
+.sec-body { font-size: 16px; color: var(--grey); max-width: 540px; margin: 0 auto 2.5rem; line-height: 1.8; font-weight: 300; }
+.gold-rule { width: 48px; height: 3px; background: var(--gold); margin: 1.5rem auto; border-radius: 2px; }
 
-.sec-tag {
-  font-size: 11px;
-  color: var(--gold);
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-weight: 600;
-  margin-bottom: 0.6rem;
-}
+.wr-table { max-width: 560px; margin: 0 auto; text-align: left; }
+.wr-row { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+.wr-label { font-size: 13px; color: var(--grey); width: 130px; flex-shrink: 0; }
+.wr-track { flex: 1; height: 5px; background: rgba(255,255,255,0.07); border-radius: 100px; overflow: hidden; }
+.wr-fill { height: 100%; background: var(--gold); border-radius: 100px; }
+.wr-pct { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--gold2); width: 50px; text-align: right; flex-shrink: 0; }
 
-.sec-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(40px, 7vw, 68px);
-  line-height: 0.95;
-  letter-spacing: 0.02em;
-  margin-bottom: 1rem;
-}
-
-.sec-body {
-  font-size: 16px;
-  color: var(--grey);
-  max-width: 540px;
-  margin: 0 auto 2.5rem;
-  line-height: 1.8;
-  font-weight: 300;
-}
-
-.gold-rule {
-  width: 48px; height: 3px;
-  background: var(--gold);
-  margin: 1.5rem auto;
-  border-radius: 2px;
-}
-
-/* ── WIN RATE BARS ── */
-.wr-table {
-  max-width: 560px;
-  margin: 0 auto;
-  text-align: left;
-}
-
-.wr-row {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 14px;
-}
-
-.wr-label {
-  font-size: 13px;
-  color: var(--grey);
-  width: 130px;
-  flex-shrink: 0;
-}
-
-.wr-track {
-  flex: 1;
-  height: 5px;
-  background: rgba(255,255,255,0.07);
-  border-radius: 100px;
-  overflow: hidden;
-}
-
-.wr-fill {
-  height: 100%;
-  background: var(--gold);
-  border-radius: 100px;
-}
-
-.wr-pct {
-  font-family: 'DM Mono', monospace;
-  font-size: 13px;
-  color: var(--gold2);
-  width: 50px;
-  text-align: right;
-  flex-shrink: 0;
-}
-
-/* ── CARD GRIDS ── */
-.card-grid-4 {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 18px;
-  overflow: hidden;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.card-grid-3 {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.card-grid-2 {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.mini-card {
-  background: var(--navy2);
-  padding: 1.5rem;
-  text-align: center;
-}
-
-.box-card {
-  background: var(--navy2);
-  border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 18px;
-  padding: 1.75rem;
-  text-align: left;
-}
-
+.card-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.07); border-radius: 18px; overflow: hidden; max-width: 900px; margin: 0 auto; }
+.card-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 900px; margin: 0 auto; }
+.card-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 900px; margin: 0 auto; }
+.mini-card { background: var(--navy2); padding: 1.5rem; text-align: center; }
+.box-card { background: var(--navy2); border: 1px solid rgba(255,255,255,0.07); border-radius: 18px; padding: 1.75rem; text-align: left; }
 .box-card.gold { border-color: rgba(201,168,76,0.3); }
-
-.box-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 38px;
-  color: var(--gold2);
-  line-height: 1;
-  margin-bottom: 4px;
-}
-
-.box-label {
-  font-size: 11px;
-  color: var(--gold);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 500;
-  margin-bottom: 0.75rem;
-}
-
+.box-num { font-family: 'Bebas Neue', sans-serif; font-size: 38px; color: var(--gold2); line-height: 1; margin-bottom: 4px; }
+.box-label { font-size: 11px; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500; margin-bottom: 0.75rem; }
 .box-desc { font-size: 13px; color: var(--grey); line-height: 1.6; }
 
-/* ── SESSION BLOCK ── */
-.session-wrap {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  max-width: 860px;
-  margin: 0 auto;
-  text-align: left;
-}
-
+.session-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 860px; margin: 0 auto; text-align: left; }
 .times-list { display: flex; flex-direction: column; gap: 14px; }
-
-.time-row {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.tdot {
-  width: 9px; height: 9px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
+.time-row { display: flex; align-items: center; gap: 14px; }
+.tdot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
 .tdot.on  { background: var(--gold); }
 .tdot.off { background: rgba(255,255,255,0.15); }
-
 .ttext { font-size: 14px; color: var(--grey); }
 .ttext strong { color: var(--white); font-weight: 500; }
-
-.highlight-box {
-  background: rgba(201,168,76,0.08);
-  border: 1px solid rgba(201,168,76,0.3);
-  border-radius: 16px;
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.highlight-box h3 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 36px;
-  color: var(--gold);
-  margin-bottom: 0.5rem;
-  line-height: 1;
-}
-
+.highlight-box { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.3); border-radius: 16px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: center; }
+.highlight-box h3 { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: var(--gold); margin-bottom: 0.5rem; line-height: 1; }
 .highlight-box p { font-size: 13px; color: var(--grey); line-height: 1.7; }
 
-/* ── SIGNAL SAMPLE ── */
-.signal-wrap {
-  max-width: 420px;
-  margin: 0 auto;
-  background: var(--navy2);
-  border: 1px solid rgba(201,168,76,0.25);
-  border-radius: 18px;
-  padding: 2rem;
-  text-align: left;
-}
-
-.signal-head {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--gold);
-  font-weight: 600;
-  margin-bottom: 1.25rem;
-}
-
-.signal-body {
-  font-family: 'DM Mono', monospace;
-  font-size: 14px;
-  line-height: 2.1;
-  color: rgba(255,255,255,0.88);
-}
-
+.signal-wrap { max-width: 420px; margin: 0 auto; background: var(--navy2); border: 1px solid rgba(201,168,76,0.25); border-radius: 18px; padding: 2rem; text-align: left; }
+.signal-head { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); font-weight: 600; margin-bottom: 1.25rem; }
+.signal-body { font-family: 'DM Mono', monospace; font-size: 14px; line-height: 2.1; color: rgba(255,255,255,0.88); }
 .signal-body .em { color: var(--gold2); font-weight: 500; }
 .signal-body .bad { color: #F08080; }
+.signal-result { margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,0.08); font-family: 'DM Mono', monospace; font-size: 14px; color: var(--gold); font-weight: 500; }
 
-.signal-result {
-  margin-top: 1.25rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid rgba(255,255,255,0.08);
-  font-family: 'DM Mono', monospace;
-  font-size: 14px;
-  color: var(--gold);
-  font-weight: 500;
-}
-
-/* ── TRADE TABLE ── */
-.table-wrap {
-  max-width: 900px;
-  margin: 0 auto;
-  overflow-x: auto;
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 18px;
-  background: var(--navy2);
-}
-
+.table-wrap { max-width: 900px; margin: 0 auto; overflow-x: auto; border: 1px solid rgba(255,255,255,0.06); border-radius: 18px; background: var(--navy2); }
 table { width: 100%; border-collapse: collapse; font-size: 13px; }
-
-th {
-  text-align: left;
-  padding: 12px 16px;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--grey);
-  font-weight: 600;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-
-td {
-  padding: 13px 16px;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-  color: rgba(255,255,255,0.85);
-}
-
+th { text-align: left; padding: 12px 16px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--grey); font-weight: 600; border-bottom: 1px solid rgba(255,255,255,0.06); }
+td { padding: 13px 16px; border-bottom: 1px solid rgba(255,255,255,0.04); color: rgba(255,255,255,0.85); }
 tr:last-child td { border-bottom: none; }
 tr:hover td { background: rgba(255,255,255,0.02); }
-
-.badge {
-  display: inline-block;
-  padding: 3px 11px;
-  border-radius: 100px;
-  font-size: 11px;
-  font-weight: 600;
-  font-family: 'DM Mono', monospace;
-}
-
-.buy  { background: rgba(30,126,52,0.2);   color: #6DD98A; }
-.sell { background: rgba(176,32,32,0.2);    color: #F08080; }
-.win  { background: rgba(201,168,76,0.15);  color: var(--gold2); }
-.sl   { background: rgba(176,32,32,0.15);   color: #F08080; }
-
-.pos { color: var(--gold2); font-family: 'DM Mono', monospace; font-weight: 500; }
-.neg { color: #F08080;      font-family: 'DM Mono', monospace; font-weight: 500; }
+.badge { display: inline-block; padding: 3px 11px; border-radius: 100px; font-size: 11px; font-weight: 600; font-family: 'DM Mono', monospace; }
+.buy  { background: rgba(30,126,52,0.2);  color: #6DD98A; }
+.sell { background: rgba(176,32,32,0.2);   color: #F08080; }
+.win  { background: rgba(201,168,76,0.15); color: var(--gold2); }
+.sl   { background: rgba(176,32,32,0.15);  color: #F08080; }
+.pos  { color: var(--gold2); font-family: 'DM Mono', monospace; font-weight: 500; }
+.neg  { color: #F08080; font-family: 'DM Mono', monospace; font-weight: 500; }
 .mono { font-family: 'DM Mono', monospace; }
 
-/* ── BEST DAYS ── */
-.days-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  max-width: 860px;
-  margin: 0 auto;
-}
-
-.day-card {
-  background: var(--navy2);
-  border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 16px;
-  padding: 1.5rem;
-  text-align: left;
-}
-
-.day-rank {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 52px;
-  color: rgba(201,168,76,0.15);
-  line-height: 1;
-  margin-bottom: 4px;
-}
-
-.day-date {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--grey);
-  margin-bottom: 6px;
-  font-weight: 500;
-}
-
-.day-pips {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 36px;
-  color: var(--gold2);
-  line-height: 1;
-}
-
+.days-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 860px; margin: 0 auto; }
+.day-card { background: var(--navy2); border: 1px solid rgba(255,255,255,0.07); border-radius: 16px; padding: 1.5rem; text-align: left; }
+.day-rank { font-family: 'Bebas Neue', sans-serif; font-size: 52px; color: rgba(201,168,76,0.15); line-height: 1; margin-bottom: 4px; }
+.day-date { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--grey); margin-bottom: 6px; font-weight: 500; }
+.day-pips { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: var(--gold2); line-height: 1; }
 .day-meta { font-size: 12px; color: var(--grey); margin-top: 4px; }
 
-/* ── FEATURES ── */
-.feat-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  max-width: 860px;
-  margin: 0 auto;
-}
-
-.feat-card {
-  background: var(--navy2);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 16px;
-  padding: 1.5rem;
-  text-align: left;
-}
-
+.feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 860px; margin: 0 auto; }
+.feat-card { background: var(--navy2); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 1.5rem; text-align: left; }
 .feat-icon { font-size: 22px; margin-bottom: 0.75rem; }
 .feat-title { font-size: 14px; font-weight: 600; margin-bottom: 0.4rem; }
 .feat-desc { font-size: 13px; color: var(--grey); line-height: 1.6; }
 
-/* ── CTA ── */
-.cta-wrap {
-  max-width: 860px;
-  margin: 0 auto;
-  background: var(--navy2);
-  border: 1px solid rgba(201,168,76,0.3);
-  border-radius: 24px;
-  padding: 4rem 3rem;
-  text-align: center;
-}
-
-.cta-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(42px, 7vw, 72px);
-  line-height: 0.95;
-  margin-bottom: 1rem;
-}
-
+.cta-wrap { max-width: 860px; margin: 0 auto; background: var(--navy2); border: 1px solid rgba(201,168,76,0.3); border-radius: 24px; padding: 4rem 3rem; text-align: center; }
+.cta-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(42px, 7vw, 72px); line-height: 0.95; margin-bottom: 1rem; }
 .cta-sub { color: var(--grey); font-size: 16px; max-width: 440px; margin: 0 auto 2rem; font-weight: 300; }
 
-.pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-  margin-bottom: 2rem;
-}
+.pills { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 2rem; }
+.pill { background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.25); border-radius: 100px; padding: 7px 18px; font-size: 13px; color: var(--gold2); font-weight: 500; }
 
-.pill {
-  background: rgba(201,168,76,0.1);
-  border: 1px solid rgba(201,168,76,0.25);
-  border-radius: 100px;
-  padding: 7px 18px;
-  font-size: 13px;
-  color: var(--gold2);
-  font-weight: 500;
-}
-
-.disclaimer {
-  font-size: 11px;
-  color: rgba(120,140,170,0.5);
-  text-align: center;
-  padding: 2rem;
-  line-height: 1.9;
-  border-top: 1px solid rgba(255,255,255,0.05);
-  max-width: 620px;
-  margin: 0 auto;
-}
+.disclaimer { font-size: 11px; color: rgba(120,140,170,0.5); text-align: center; padding: 2rem; line-height: 1.9; border-top: 1px solid rgba(255,255,255,0.05); max-width: 620px; margin: 0 auto; }
 
 @media (max-width: 700px) {
   .stats-bar    { grid-template-columns: repeat(3,1fr); }
@@ -545,482 +162,94 @@ tr:hover td { background: rgba(255,255,255,0.02); }
   .contact-grid { grid-template-columns: 1fr; }
 }
 
-/* ── HOW IT WORKS ── */
-.steps-wrap {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  max-width: 860px;
-  margin: 0 auto 2rem;
-}
-
-.step-card {
-  flex: 1;
-  background: var(--navy);
-  border: 1px solid rgba(201,168,76,0.2);
-  border-radius: 18px;
-  padding: 1.75rem;
-  text-align: center;
-}
-
-.step-num {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 48px;
-  color: rgba(201,168,76,0.25);
-  line-height: 1;
-  margin-bottom: 0.5rem;
-}
-
-.step-title {
-  font-size: 15px;
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: var(--gold2);
-}
-
+.steps-wrap { display: flex; align-items: center; gap: 1rem; max-width: 860px; margin: 0 auto 2rem; }
+.step-card { flex: 1; background: var(--navy); border: 1px solid rgba(201,168,76,0.2); border-radius: 18px; padding: 1.75rem; text-align: center; }
+.step-num { font-family: 'Bebas Neue', sans-serif; font-size: 48px; color: rgba(201,168,76,0.25); line-height: 1; margin-bottom: 0.5rem; }
+.step-title { font-size: 15px; font-weight: 600; margin-bottom: 0.5rem; color: var(--gold2); }
 .step-desc { font-size: 13px; color: var(--grey); line-height: 1.6; }
+.step-arrow { font-size: 24px; color: rgba(201,168,76,0.4); flex-shrink: 0; }
+.integration-badge { display: inline-flex; align-items: center; gap: 10px; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2); border-radius: 100px; padding: 10px 24px; font-size: 13px; color: var(--gold2); font-weight: 500; margin-top: 1rem; }
 
-.step-arrow {
-  font-size: 24px;
-  color: rgba(201,168,76,0.4);
-  flex-shrink: 0;
-}
-
-.integration-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(201,168,76,0.08);
-  border: 1px solid rgba(201,168,76,0.2);
-  border-radius: 100px;
-  padding: 10px 24px;
-  font-size: 13px;
-  color: var(--gold2);
-  font-weight: 500;
-  margin-top: 1rem;
-}
-
-/* ── PRICING ── */
-.pricing-wrap {
-  max-width: 520px;
-  margin: 0 auto;
-}
-
-.price-card {
-  background: var(--navy2);
-  border: 2px solid rgba(201,168,76,0.4);
-  border-radius: 24px;
-  padding: 2.5rem;
-  text-align: center;
-  position: relative;
-}
-
-.price-tag {
-  display: inline-block;
-  background: var(--gold);
-  color: var(--navy);
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  padding: 5px 18px;
-  border-radius: 100px;
-  margin-bottom: 1.5rem;
-}
-
-.price-amount {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 36px;
-  color: var(--white);
-  line-height: 1.1;
-  margin-bottom: 0.25rem;
-}
-
-.price-amount span {
-  font-size: 52px;
-  color: var(--gold);
-  display: block;
-}
-
-.price-divider {
-  width: 48px; height: 2px;
-  background: rgba(201,168,76,0.3);
-  margin: 1.5rem auto;
-  border-radius: 2px;
-}
-
-.price-list {
-  list-style: none;
-  text-align: left;
-  margin-bottom: 1.5rem;
-}
-
-.price-list li {
-  font-size: 14px;
-  color: rgba(255,255,255,0.8);
-  padding: 7px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  line-height: 1.5;
-}
-
+.pricing-wrap { max-width: 520px; margin: 0 auto; }
+.price-card { background: var(--navy2); border: 2px solid rgba(201,168,76,0.4); border-radius: 24px; padding: 2.5rem; text-align: center; position: relative; }
+.price-tag { display: inline-block; background: var(--gold); color: var(--navy); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; padding: 5px 18px; border-radius: 100px; margin-bottom: 1.5rem; }
+.price-amount { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: var(--white); line-height: 1.1; margin-bottom: 0.25rem; }
+.price-amount span { font-size: 52px; color: var(--gold); display: block; }
+.price-divider { width: 48px; height: 2px; background: rgba(201,168,76,0.3); margin: 1.5rem auto; border-radius: 2px; }
+.price-list { list-style: none; text-align: left; margin-bottom: 1.5rem; }
+.price-list li { font-size: 14px; color: rgba(255,255,255,0.8); padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.05); line-height: 1.5; }
 .price-list li:last-child { border-bottom: none; }
+.price-note { font-size: 13px; color: var(--gold2); font-weight: 500; margin-top: 0.5rem; }
 
-.price-note {
-  font-size: 13px;
-  color: var(--gold2);
-  font-weight: 500;
-  margin-top: 0.5rem;
-}
-
-/* ── CONTACT ── */
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.contact-card {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-  padding: 1.5rem 1.75rem;
-  border-radius: 18px;
-  text-decoration: none;
-  border: 1px solid rgba(255,255,255,0.08);
-  transition: transform 0.2s, border-color 0.2s;
-}
-
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 700px; margin: 0 auto; }
+.contact-card { display: flex; align-items: center; gap: 1.25rem; padding: 1.5rem 1.75rem; border-radius: 18px; text-decoration: none; border: 1px solid rgba(255,255,255,0.08); transition: transform 0.2s, border-color 0.2s; }
 .contact-card:hover { transform: translateY(-2px); }
-
-.contact-card.whatsapp {
-  background: rgba(37,211,102,0.08);
-  border-color: rgba(37,211,102,0.25);
-}
-
-.contact-card.telegram {
-  background: rgba(42,174,226,0.08);
-  border-color: rgba(42,174,226,0.25);
-}
-
+.contact-card.whatsapp { background: rgba(37,211,102,0.08); border-color: rgba(37,211,102,0.25); }
+.contact-card.telegram { background: rgba(42,174,226,0.08); border-color: rgba(42,174,226,0.25); }
 .contact-card.whatsapp .contact-icon { color: #25D366; }
 .contact-card.telegram .contact-icon  { color: #2AABE2; }
-
-.contact-icon {
-  flex-shrink: 0;
-  width: 52px; height: 52px;
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255,255,255,0.05);
-}
-
+.contact-icon { flex-shrink: 0; width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.05); }
 .contact-info { text-align: left; }
-
-.contact-platform {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--grey);
-  font-weight: 600;
-  margin-bottom: 3px;
-}
-
-.contact-number {
-  font-family: 'DM Mono', monospace;
-  font-size: 16px;
-  color: var(--white);
-  font-weight: 500;
-  margin-bottom: 3px;
-}
-
+.contact-platform { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--grey); font-weight: 600; margin-bottom: 3px; }
+.contact-number { font-family: 'DM Mono', monospace; font-size: 16px; color: var(--white); font-weight: 500; margin-bottom: 3px; }
 .contact-cta { font-size: 12px; color: var(--grey); }
 
-/* ── NAVBAR ── */
-.navbar {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 999;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 2.5rem;
-  height: 64px;
-  background: rgba(8,13,26,0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(201,168,76,0.12);
-}
-
-.nav-brand {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 22px;
-  letter-spacing: 0.06em;
-  color: var(--white);
-}
-
+.navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 999; display: flex; align-items: center; justify-content: space-between; padding: 0 2.5rem; height: 64px; background: rgba(8,13,26,0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(201,168,76,0.12); }
+.nav-brand { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.06em; color: var(--white); }
 .nav-brand span { color: var(--gold); }
-
 .nav-right { display: flex; align-items: center; gap: 12px; }
+.nav-chat-btn { display: flex; align-items: center; gap: 8px; background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.35); color: var(--gold2); font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600; padding: 8px 18px; border-radius: 100px; cursor: pointer; transition: background 0.2s, transform 0.15s; text-decoration: none; }
+.nav-chat-btn:hover { background: rgba(201,168,76,0.2); transform: translateY(-1px); }
+.nav-contact-btn { display: flex; align-items: center; gap: 8px; background: var(--gold); color: var(--navy); font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 700; padding: 9px 20px; border-radius: 100px; cursor: pointer; transition: background 0.2s, transform 0.15s; text-decoration: none; border: none; }
+.nav-contact-btn:hover { background: var(--gold2); transform: translateY(-1px); }
 
-.nav-chat-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(201,168,76,0.1);
-  border: 1px solid rgba(201,168,76,0.35);
-  color: var(--gold2);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  padding: 8px 18px;
-  border-radius: 100px;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.15s;
-  text-decoration: none;
-}
-
-.nav-chat-btn:hover {
-  background: rgba(201,168,76,0.2);
-  transform: translateY(-1px);
-}
-
-.nav-contact-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--gold);
-  color: var(--navy);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  padding: 9px 20px;
-  border-radius: 100px;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.15s;
-  text-decoration: none;
-  border: none;
-}
-
-.nav-contact-btn:hover {
-  background: var(--gold2);
-  transform: translateY(-1px);
-}
-
-/* ── CHATBOT ── */
-.chat-bubble {
-  position: fixed;
-  bottom: 28px;
-  right: 28px;
-  width: 56px; height: 56px;
-  background: var(--gold);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 1000;
-  box-shadow: 0 4px 20px rgba(201,168,76,0.4);
-  transition: transform 0.2s, box-shadow 0.2s;
-  border: none;
-}
-
-.chat-bubble:hover {
-  transform: scale(1.08);
-  box-shadow: 0 6px 28px rgba(201,168,76,0.55);
-}
-
+.chat-bubble { position: fixed; bottom: 28px; right: 28px; width: 56px; height: 56px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1000; box-shadow: 0 4px 20px rgba(201,168,76,0.4); transition: transform 0.2s, box-shadow 0.2s; border: none; }
+.chat-bubble:hover { transform: scale(1.08); box-shadow: 0 6px 28px rgba(201,168,76,0.55); }
 .chat-bubble svg { color: var(--navy); }
+.chat-bubble .chat-badge { position: absolute; top: -3px; right: -3px; width: 16px; height: 16px; background: #25D366; border-radius: 50%; border: 2px solid var(--navy); animation: blink 2s infinite; }
 
-.chat-bubble .chat-badge {
-  position: absolute;
-  top: -3px; right: -3px;
-  width: 16px; height: 16px;
-  background: #25D366;
-  border-radius: 50%;
-  border: 2px solid var(--navy);
-  animation: blink 2s infinite;
-}
-
-.chat-window {
-  position: fixed;
-  bottom: 96px;
-  right: 28px;
-  width: 360px;
-  background: var(--navy2);
-  border: 1px solid rgba(201,168,76,0.25);
-  border-radius: 20px;
-  overflow: hidden;
-  z-index: 1000;
-  box-shadow: 0 16px 48px rgba(0,0,0,0.5);
-  display: none;
-  flex-direction: column;
-  animation: slideUp 0.25s ease;
-}
-
+.chat-window { position: fixed; bottom: 96px; right: 28px; width: 360px; background: var(--navy2); border: 1px solid rgba(201,168,76,0.25); border-radius: 20px; overflow: hidden; z-index: 1000; box-shadow: 0 16px 48px rgba(0,0,0,0.5); display: none; flex-direction: column; animation: slideUp 0.25s ease; }
 .chat-window.open { display: flex; }
+@keyframes slideUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
 
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.chat-header {
-  background: var(--navy);
-  border-bottom: 1px solid rgba(201,168,76,0.15);
-  padding: 1rem 1.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
+.chat-header { background: var(--navy); border-bottom: 1px solid rgba(201,168,76,0.15); padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between; }
 .chat-header-left { display: flex; align-items: center; gap: 12px; }
-
-.chat-avatar {
-  width: 40px; height: 40px;
-  background: var(--gold);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 16px;
-  color: var(--navy);
-  flex-shrink: 0;
-}
-
+.chat-avatar { width: 40px; height: 40px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 16px; color: var(--navy); flex-shrink: 0; }
 .chat-name { font-size: 14px; font-weight: 600; color: var(--white); }
 .chat-status { font-size: 11px; color: #25D366; display: flex; align-items: center; gap: 5px; }
 .chat-status::before { content: ''; width: 6px; height: 6px; background: #25D366; border-radius: 50%; display: inline-block; }
-
-.chat-close {
-  background: none;
-  border: none;
-  color: var(--grey);
-  cursor: pointer;
-  font-size: 18px;
-  line-height: 1;
-  padding: 4px;
-  transition: color 0.15s;
-}
-
+.chat-close { background: none; border: none; color: var(--grey); cursor: pointer; font-size: 18px; line-height: 1; padding: 4px; transition: color 0.15s; }
 .chat-close:hover { color: var(--white); }
 
-.chat-messages {
-  padding: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  max-height: 280px;
-  overflow-y: auto;
-}
-
-.chat-msg {
-  display: flex;
-  gap: 8px;
-  align-items: flex-start;
-}
-
-.msg-avatar {
-  width: 28px; height: 28px;
-  background: var(--gold);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 11px;
-  color: var(--navy);
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.msg-bubble {
-  background: rgba(255,255,255,0.06);
-  border-radius: 0 14px 14px 14px;
-  padding: 10px 14px;
-  font-size: 13px;
-  color: rgba(255,255,255,0.88);
-  line-height: 1.6;
-  max-width: 260px;
-}
-
-.msg-bubble.user-msg {
-  background: rgba(201,168,76,0.15);
-  border-radius: 14px 0 14px 14px;
-  color: var(--gold3);
-  margin-left: auto;
-}
-
+.chat-messages { padding: 1.25rem; display: flex; flex-direction: column; gap: 10px; max-height: 280px; overflow-y: auto; }
+.chat-msg { display: flex; gap: 8px; align-items: flex-start; }
+.msg-avatar { width: 28px; height: 28px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 11px; color: var(--navy); flex-shrink: 0; margin-top: 2px; }
+.msg-bubble { background: rgba(255,255,255,0.06); border-radius: 0 14px 14px 14px; padding: 10px 14px; font-size: 13px; color: rgba(255,255,255,0.88); line-height: 1.6; max-width: 260px; }
+.msg-bubble.user-msg { background: rgba(201,168,76,0.15); border-radius: 14px 0 14px 14px; color: var(--gold3); margin-left: auto; }
 .msg-time { font-size: 10px; color: var(--grey); margin-top: 3px; }
-
-.chat-reply {
-  background: rgba(37,211,102,0.08);
-  border: 1px solid rgba(37,211,102,0.2);
-  border-radius: 14px;
-  padding: 10px 14px;
-  font-size: 13px;
-  color: rgba(255,255,255,0.88);
-  line-height: 1.6;
-  display: none;
-}
-
+.chat-reply { background: rgba(37,211,102,0.08); border: 1px solid rgba(37,211,102,0.2); border-radius: 14px; padding: 10px 14px; font-size: 13px; color: rgba(255,255,255,0.88); line-height: 1.6; display: none; }
 .chat-reply.show { display: block; }
 
-.chat-input-area {
-  padding: 1rem 1.25rem;
-  border-top: 1px solid rgba(255,255,255,0.06);
-  display: flex;
-  gap: 8px;
-}
-
-.chat-input {
-  flex: 1;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 100px;
-  padding: 9px 16px;
-  font-size: 13px;
-  color: var(--white);
-  font-family: 'DM Sans', sans-serif;
-  outline: none;
-  transition: border-color 0.2s;
-}
-
+.chat-input-area { padding: 1rem 1.25rem; border-top: 1px solid rgba(255,255,255,0.06); display: flex; gap: 8px; }
+.chat-input { flex: 1; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 100px; padding: 9px 16px; font-size: 13px; color: var(--white); font-family: 'DM Sans', sans-serif; outline: none; transition: border-color 0.2s; }
 .chat-input::placeholder { color: var(--grey); }
 .chat-input:focus { border-color: rgba(201,168,76,0.4); }
-
-.chat-send {
-  width: 38px; height: 38px;
-  background: var(--gold);
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s, transform 0.15s;
-  flex-shrink: 0;
-}
-
+.chat-send { width: 38px; height: 38px; background: var(--gold); border: none; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s, transform 0.15s; flex-shrink: 0; }
 .chat-send:hover { background: var(--gold2); transform: scale(1.05); }
+.chat-footer { text-align: center; font-size: 10px; color: var(--grey); padding: 0 1.25rem 0.75rem; }
 
-.chat-footer {
-  text-align: center;
-  font-size: 10px;
-  color: var(--grey);
-  padding: 0 1.25rem 0.75rem;
-}
-
-/* push hero down for navbar */
 .hero { padding-top: 140px; }
+
+.typing-dots { display:inline-flex; gap:4px; align-items:center; }
+.typing-dots span { width:7px; height:7px; background: rgba(255,255,255,0.35); border-radius:50%; animation: tdot 1.2s infinite; }
+.typing-dots span:nth-child(2) { animation-delay:0.2s; }
+.typing-dots span:nth-child(3) { animation-delay:0.4s; }
+@keyframes tdot { 0%,80%,100% { transform:scale(0.6); opacity:0.4; } 40% { transform:scale(1); opacity:1; } }
 </style>
 </head>
 <body>
 
-<!-- ══ NAVBAR ══════════════════════════════════════════════════════════════ -->
+<!-- NAVBAR -->
 <nav class="navbar">
   <div class="nav-brand">Aurex <span>Dominion</span></div>
   <div class="nav-right">
@@ -1035,12 +264,13 @@ tr:hover td { background: rgba(255,255,255,0.02); }
   </div>
 </nav>
 
-<!-- ══ CHATBOT ══════════════════════════════════════════════════════════════ -->
+<!-- CHATBOT BUBBLE -->
 <button class="chat-bubble" onclick="toggleChat()" aria-label="Open chat">
   <div class="chat-badge"></div>
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
 </button>
 
+<!-- CHATBOT WINDOW -->
 <div class="chat-window" id="chatWindow">
   <div class="chat-header">
     <div class="chat-header-left">
@@ -1052,7 +282,6 @@ tr:hover td { background: rgba(255,255,255,0.02); }
     </div>
     <button class="chat-close" onclick="toggleChat()">✕</button>
   </div>
-
   <div class="chat-messages" id="chatMessages">
     <div class="chat-msg">
       <div class="msg-avatar">AD</div>
@@ -1066,7 +295,6 @@ tr:hover td { background: rgba(255,255,255,0.02); }
       </div>
     </div>
   </div>
-
   <div class="chat-input-area">
     <input class="chat-input" id="chatInput" type="text" placeholder="Type your message..." onkeydown="if(event.key==='Enter') sendMessage()">
     <button class="chat-send" onclick="sendMessage()">
@@ -1077,9 +305,8 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 </div>
 
 <script>
-// ── Chat state ────────────────────────────────────────────────────────────
 const PHONE = '447843903736';
-let chatStep = 0;       // 0=initial, 1=waiting for contact, 2=done
+let chatStep = 0;
 let userFirstMsg = '';
 let userContact  = '';
 
@@ -1093,7 +320,6 @@ function toggleChat() {
 
 function addBotMsg(html, delay = 1000) {
   return new Promise(resolve => {
-    // Typing indicator
     const typing = document.createElement('div');
     typing.className = 'chat-msg';
     typing.id = 'typing-indicator';
@@ -1106,11 +332,8 @@ function addBotMsg(html, delay = 1000) {
     document.getElementById('chatMessages').scrollTop = 99999;
 
     setTimeout(() => {
-      // Remove typing indicator
       const t = document.getElementById('typing-indicator');
       if (t) t.remove();
-
-      // Add real message
       const div = document.createElement('div');
       div.className = 'chat-msg';
       div.innerHTML = `
@@ -1146,11 +369,9 @@ async function sendMessage() {
   addUserMsg(msg);
   input.value = '';
 
-  // ── Step 0: First message received ────────────────────────────────────
   if (chatStep === 0) {
     userFirstMsg = msg;
     chatStep = 1;
-
     await addBotMsg(
       `✅ <strong>Thank you for reaching out to Aurex Dominion!</strong><br><br>
       We're thrilled by your interest. Our team will personally get back to you very shortly.<br><br>
@@ -1160,18 +381,15 @@ async function sendMessage() {
     updatePlaceholder('Your WhatsApp number or email...');
   }
 
-  // ── Step 1: Contact detail received ───────────────────────────────────
   else if (chatStep === 1) {
     userContact = msg;
     chatStep = 2;
 
-    // Disable input
     input.disabled = true;
     input.placeholder = 'Message sent ✓';
     document.querySelector('.chat-send').disabled = true;
     document.querySelector('.chat-send').style.opacity = '0.4';
 
-    // Show warm thank you
     await addBotMsg(
       `🙏 <strong>Perfect, thank you!</strong><br><br>
       One of our team members will be in touch with you at <strong>${userContact}</strong> very shortly.<br><br>
@@ -1180,9 +398,10 @@ async function sendMessage() {
       1200
     );
 
-    // ── Send via Telegram Bot API (CORS-safe) ────────────────────────────
+    // ── Telegram Notification ─────────────────────────────────────────────
+    // IMPORTANT: Replace YOUR_NEW_BOT_TOKEN with your token from BotFather
     const TG_TOKEN   = '8845306916:AAGMbVfVmRuSVBZyR4YnzG53nn4WlNdH1cU';
-    const TG_CHAT_ID = '7801796825';
+    const TG_CHAT_ID = '-1004287333946';
 
     const now = new Date().toLocaleString('en-GB', { timeZone: 'Europe/London' });
 
@@ -1193,66 +412,35 @@ async function sendMessage() {
       `🕐 Time: ${now}\n` +
       `🌐 Source: Portfolio Website Chatbot`;
 
-    // Build the Telegram API URL
-    const tgUrl = `https://api.telegram.org/bot${TG_TOKEN}/sendMessage?chat_id=${encodeURIComponent(TG_CHAT_ID)}&text=${encodeURIComponent(tgText)}`;
-
-    // Method 1: Direct fetch with proper headers
     try {
-      const res = await fetch(tgUrl, { method: 'GET' });
+      const res = await fetch(
+        `https://api.telegram.org/bot${TG_TOKEN}/sendMessage`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chat_id: TG_CHAT_ID, text: tgText })
+        }
+      );
       const json = await res.json();
       if (json.ok) {
         console.log('✅ Telegram message sent!');
-        return;
+      } else {
+        console.warn('Telegram error:', json);
       }
-      console.warn('Telegram error:', json);
     } catch(e) {
-      console.warn('Direct fetch failed, trying proxy...', e.message);
-    }
-
-    // Method 2: CORS proxy fallback
-    try {
-      const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(tgUrl)}`;
-      const res2 = await fetch(proxyUrl);
-      const json2 = await res2.json();
-      console.log('Proxy response:', json2.contents?.substring(0, 100));
-    } catch(e2) {
-      console.warn('Proxy also failed:', e2.message);
+      console.warn('Telegram send failed:', e.message);
     }
   }
 }
 </script>
 
-<!-- typing dots CSS injected here -->
-<style>
-.typing-dots { display:inline-flex; gap:4px; align-items:center; }
-.typing-dots span {
-  width:7px; height:7px;
-  background: rgba(255,255,255,0.35);
-  border-radius:50%;
-  animation: tdot 1.2s infinite;
-}
-.typing-dots span:nth-child(2) { animation-delay:0.2s; }
-.typing-dots span:nth-child(3) { animation-delay:0.4s; }
-@keyframes tdot {
-  0%,80%,100% { transform:scale(0.6); opacity:0.4; }
-  40%          { transform:scale(1);   opacity:1; }
-}
-</style>
-
-
-
-<!-- ══ HERO ═══════════════════════════════════════════════════════════════ -->
+<!-- HERO -->
 <section class="hero">
   <div class="live-pill"><div class="live-dot"></div>Live Signal Provider · New York Session</div>
-
-  <div class="hero-title">
-    Aurex<br><span class="gold">Dominion</span>
-  </div>
-
+  <div class="hero-title">Aurex<br><span class="gold">Dominion</span></div>
   <p class="hero-subtitle">
     <strong>XAUUSD (Gold)</strong> signals with a documented <strong>82% win rate</strong> — 121 live trades, fully tracked from March to June 2025.
   </p>
-
   <div class="stats-bar">
     <div class="stat-item"><div class="stat-num">121</div><div class="stat-label">Trades</div></div>
     <div class="stat-item"><div class="stat-num">82%</div><div class="stat-label">Win Rate</div></div>
@@ -1263,103 +451,54 @@ async function sendMessage() {
   </div>
 </section>
 
-<!-- ══ WIN RATES ══════════════════════════════════════════════════════════ -->
+<!-- WIN RATES -->
 <section class="section dark">
   <div class="sec-tag">Performance Breakdown</div>
   <div class="sec-title">Win Rate By Category</div>
   <div class="gold-rule"></div>
   <p class="sec-body">Consistent across direction, time, and market conditions — all trades documented from day one.</p>
-
   <div class="wr-table">
-    <div class="wr-row">
-      <span class="wr-label">Overall</span>
-      <div class="wr-track"><div class="wr-fill" style="width:82%"></div></div>
-      <span class="wr-pct">82.0%</span>
-    </div>
-    <div class="wr-row">
-      <span class="wr-label">BUY trades</span>
-      <div class="wr-track"><div class="wr-fill" style="width:80%"></div></div>
-      <span class="wr-pct">80.0%</span>
-    </div>
-    <div class="wr-row">
-      <span class="wr-label">SELL trades</span>
-      <div class="wr-track"><div class="wr-fill" style="width:85%"></div></div>
-      <span class="wr-pct">85.0%</span>
-    </div>
-    <div class="wr-row">
-      <span class="wr-label">TP4 exits</span>
-      <div class="wr-track"><div class="wr-fill" style="width:43%"></div></div>
-      <span class="wr-pct">43% of wins</span>
-    </div>
-    <div class="wr-row">
-      <span class="wr-label">Best 2 weeks</span>
-      <div class="wr-track"><div class="wr-fill" style="width:93.8%"></div></div>
-      <span class="wr-pct">93.8%</span>
-    </div>
+    <div class="wr-row"><span class="wr-label">Overall</span><div class="wr-track"><div class="wr-fill" style="width:82%"></div></div><span class="wr-pct">82.0%</span></div>
+    <div class="wr-row"><span class="wr-label">BUY trades</span><div class="wr-track"><div class="wr-fill" style="width:80%"></div></div><span class="wr-pct">80.0%</span></div>
+    <div class="wr-row"><span class="wr-label">SELL trades</span><div class="wr-track"><div class="wr-fill" style="width:85%"></div></div><span class="wr-pct">85.0%</span></div>
+    <div class="wr-row"><span class="wr-label">TP4 exits</span><div class="wr-track"><div class="wr-fill" style="width:43%"></div></div><span class="wr-pct">43% of wins</span></div>
+    <div class="wr-row"><span class="wr-label">Best 2 weeks</span><div class="wr-track"><div class="wr-fill" style="width:93.8%"></div></div><span class="wr-pct">93.8%</span></div>
   </div>
-
   <br><br>
-
   <div class="card-grid-4" style="margin-top:0.5rem;">
-    <div class="mini-card">
-      <div class="stat-num" style="font-size:38px;">80+</div>
-      <div class="stat-label">Trading Days</div>
-    </div>
-    <div class="mini-card">
-      <div class="stat-num" style="font-size:38px;">−70</div>
-      <div class="stat-label">Fixed Max Loss</div>
-    </div>
-    <div class="mini-card">
-      <div class="stat-num" style="font-size:38px;">5</div>
-      <div class="stat-label">TP Levels Per Signal</div>
-    </div>
-    <div class="mini-card">
-      <div class="stat-num" style="font-size:38px;">100%</div>
-      <div class="stat-label">Days Documented</div>
-    </div>
+    <div class="mini-card"><div class="stat-num" style="font-size:38px;">80+</div><div class="stat-label">Trading Days</div></div>
+    <div class="mini-card"><div class="stat-num" style="font-size:38px;">−70</div><div class="stat-label">Fixed Max Loss</div></div>
+    <div class="mini-card"><div class="stat-num" style="font-size:38px;">5</div><div class="stat-label">TP Levels Per Signal</div></div>
+    <div class="mini-card"><div class="stat-num" style="font-size:38px;">100%</div><div class="stat-label">Days Documented</div></div>
   </div>
 </section>
 
-<!-- ══ SESSION ════════════════════════════════════════════════════════════ -->
+<!-- SESSION -->
 <section class="section">
   <div class="sec-tag">Session Coverage</div>
   <div class="sec-title">New York Session Specialist</div>
   <div class="gold-rule"></div>
   <p class="sec-body">All signals called live during the New York session — the highest-volume period for Gold. Entries typically between 2pm–8pm BST.</p>
-
   <div class="session-wrap">
     <div class="times-list">
-      <div class="time-row">
-        <div class="tdot off"></div>
-        <div class="ttext"><strong>London Open</strong> — 8am BST · Pre-session watch</div>
-      </div>
-      <div class="time-row">
-        <div class="tdot off"></div>
-        <div class="ttext"><strong>NY Pre-market</strong> — 1pm BST · Setup scanning</div>
-      </div>
-      <div class="time-row">
-        <div class="tdot on"></div>
-        <div class="ttext"><strong>NY Session LIVE</strong> — 2pm–8pm BST · Signals active 🟢</div>
-      </div>
-      <div class="time-row">
-        <div class="tdot off"></div>
-        <div class="ttext"><strong>Late session</strong> — 8pm–10pm BST · Occasional setups</div>
-      </div>
+      <div class="time-row"><div class="tdot off"></div><div class="ttext"><strong>London Open</strong> — 8am BST · Pre-session watch</div></div>
+      <div class="time-row"><div class="tdot off"></div><div class="ttext"><strong>NY Pre-market</strong> — 1pm BST · Setup scanning</div></div>
+      <div class="time-row"><div class="tdot on"></div><div class="ttext"><strong>NY Session LIVE</strong> — 2pm–8pm BST · Signals active 🟢</div></div>
+      <div class="time-row"><div class="tdot off"></div><div class="ttext"><strong>Late session</strong> — 8pm–10pm BST · Occasional setups</div></div>
     </div>
     <div class="highlight-box">
       <h3>2pm – 6pm BST</h3>
-      <p>Peak window. 80%+ win rate. London & New York overlap — maximum institutional volume, cleanest price action, sharpest entries. This is where the edge lives.</p>
+      <p>Peak window. 80%+ win rate. London &amp; New York overlap — maximum institutional volume, cleanest price action, sharpest entries. This is where the edge lives.</p>
     </div>
   </div>
 </section>
 
-<!-- ══ SIGNAL FORMAT ══════════════════════════════════════════════════════ -->
+<!-- SIGNAL FORMAT -->
 <section class="section dark">
   <div class="sec-tag">Signal Format</div>
   <div class="sec-title">Clear. Structured. Actionable.</div>
   <div class="gold-rule"></div>
   <p class="sec-body">Every signal delivered with precise entry zone, fixed stop loss, and 5 take profit targets. No ambiguity, no vague levels.</p>
-
   <div class="signal-wrap">
     <div class="signal-head">Sample Signal</div>
     <div class="signal-body">
@@ -1377,19 +516,16 @@ async function sendMessage() {
   </div>
 </section>
 
-<!-- ══ TRADE LOG ══════════════════════════════════════════════════════════ -->
+<!-- TRADE LOG -->
 <section class="section">
   <div class="sec-tag">Verified Track Record</div>
   <div class="sec-title">Recent Signals Log</div>
   <div class="gold-rule"></div>
   <p class="sec-body">A selection of documented trades — every entry, exit and result recorded from day one. Full journal available on request.</p>
-
   <div class="table-wrap">
     <table>
       <thead>
-        <tr>
-          <th>Date</th><th>Time (BST)</th><th>Direction</th><th>Entry</th><th>Result</th><th>Pips</th>
-        </tr>
+        <tr><th>Date</th><th>Time (BST)</th><th>Direction</th><th>Entry</th><th>Result</th><th>Pips</th></tr>
       </thead>
       <tbody>
         <tr><td>May 21</td><td>5:28pm</td><td><span class="badge buy">BUY</span></td><td class="mono">4514–4516</td><td><span class="badge win">TP4 Hit</span></td><td class="pos">+290</td></tr>
@@ -1410,13 +546,12 @@ async function sendMessage() {
   <p style="font-size:12px;color:var(--grey);margin-top:1rem;text-align:center;">Showing 12 of 121 documented trades · Full journal available on request</p>
 </section>
 
-<!-- ══ BEST DAYS ══════════════════════════════════════════════════════════ -->
+<!-- BEST DAYS -->
 <section class="section dark">
   <div class="sec-tag">Top Sessions</div>
   <div class="sec-title">Hall of Fame</div>
   <div class="gold-rule"></div>
   <p class="sec-body">The best single-day performances — all live, all documented.</p>
-
   <div class="days-grid">
     <div class="day-card"><div class="day-rank">01</div><div class="day-date">April 2, 2025</div><div class="day-pips">+990</div><div class="day-meta">6 trades · 6 wins · 100%</div></div>
     <div class="day-card"><div class="day-rank">02</div><div class="day-date">April 21, 2025</div><div class="day-pips">+610</div><div class="day-meta">3 trades · 3 wins · 100%</div></div>
@@ -1427,12 +562,11 @@ async function sendMessage() {
   </div>
 </section>
 
-<!-- ══ FEATURES ═══════════════════════════════════════════════════════════ -->
+<!-- FEATURES -->
 <section class="section">
   <div class="sec-tag">What You Get</div>
   <div class="sec-title">Every Signal. Every Detail.</div>
   <div class="gold-rule"></div>
-
   <div class="feat-grid">
     <div class="feat-card"><div class="feat-icon">📍</div><div class="feat-title">Precise Entry Zones</div><div class="feat-desc">Tight 2–3 pip entry ranges — not vague levels or zones.</div></div>
     <div class="feat-card"><div class="feat-icon">🛑</div><div class="feat-title">Fixed Stop Loss</div><div class="feat-desc">Every signal has a defined SL. Maximum loss always known upfront.</div></div>
@@ -1443,46 +577,31 @@ async function sendMessage() {
   </div>
 </section>
 
-<!-- ══ HOW IT WORKS ════════════════════════════════════════════════════════ -->
+<!-- HOW IT WORKS -->
 <section class="section dark">
   <div class="sec-tag">Seamless Setup</div>
   <div class="sec-title">Works In Your Existing Channel</div>
   <div class="gold-rule"></div>
   <p class="sec-body">No need to create a new group or move your members anywhere. We plug directly into your existing Telegram channel — our support team handles everything.</p>
-
   <div class="steps-wrap">
-    <div class="step-card">
-      <div class="step-num">01</div>
-      <div class="step-title">You reach out</div>
-      <div class="step-desc">Contact us on WhatsApp or Telegram. We discuss your channel, member count, and requirements.</div>
-    </div>
+    <div class="step-card"><div class="step-num">01</div><div class="step-title">You reach out</div><div class="step-desc">Contact us on WhatsApp or Telegram. We discuss your channel, member count, and requirements.</div></div>
     <div class="step-arrow">→</div>
-    <div class="step-card">
-      <div class="step-num">02</div>
-      <div class="step-title">We set up</div>
-      <div class="step-desc">Our support team connects everything automatically. Zero technical work needed from you.</div>
-    </div>
+    <div class="step-card"><div class="step-num">02</div><div class="step-title">We set up</div><div class="step-desc">Our support team connects everything automatically. Zero technical work needed from you.</div></div>
     <div class="step-arrow">→</div>
-    <div class="step-card">
-      <div class="step-num">03</div>
-      <div class="step-title">Signals go live</div>
-      <div class="step-desc">Your members receive live NY session XAUUSD signals directly in your existing Telegram channel.</div>
-    </div>
+    <div class="step-card"><div class="step-num">03</div><div class="step-title">Signals go live</div><div class="step-desc">Your members receive live NY session XAUUSD signals directly in your existing Telegram channel.</div></div>
   </div>
-
   <div class="integration-badge">
     <span>🤖</span>
     <span>Automatic setup · No technical knowledge required · Your channel stays yours</span>
   </div>
 </section>
 
-<!-- ══ PRICING ════════════════════════════════════════════════════════════ -->
+<!-- PRICING -->
 <section class="section">
   <div class="sec-tag">Transparent Pricing</div>
   <div class="sec-title">Fixed Monthly Rate</div>
   <div class="gold-rule"></div>
   <p class="sec-body">One flat monthly fee. No hidden costs, no per-signal charges, no revenue splits. Just consistent, professional signals delivered to your channel every trading day.</p>
-
   <div class="pricing-wrap">
     <div class="price-card">
       <div class="price-tag">Monthly Partnership</div>
@@ -1492,7 +611,7 @@ async function sendMessage() {
         <li>✅ Live NY session signals daily</li>
         <li>✅ Delivered to your existing Telegram channel</li>
         <li>✅ Full signal format — Entry, SL, TP1–TP5</li>
-        <li>✅ Real-time TP hit & SL notifications</li>
+        <li>✅ Real-time TP hit &amp; SL notifications</li>
         <li>✅ XAUUSD (Gold) specialist signals</li>
         <li>✅ 2pm – 8pm BST coverage</li>
         <li>✅ Automated setup by our support team</li>
@@ -1503,15 +622,14 @@ async function sendMessage() {
   </div>
 </section>
 
-<!-- ══ CONTACT ════════════════════════════════════════════════════════════ -->
+<!-- CONTACT -->
 <section class="section dark">
   <div class="sec-tag">Get In Touch</div>
   <div class="sec-title">Ready to Partner?</div>
   <div class="gold-rule"></div>
   <p class="sec-body">Reach us directly on WhatsApp or Telegram. We respond fast and can have your channel set up and live quickly.</p>
-
   <div class="contact-grid">
-    <a class="contact-card whatsapp" href="https://wa.me/447843903736">
+    <a class="contact-card whatsapp" href="https://wa.me/447843903736" target="_blank">
       <div class="contact-icon">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       </div>
@@ -1521,19 +639,18 @@ async function sendMessage() {
         <div class="contact-cta">Tap to message →</div>
       </div>
     </a>
-
-    <a class="contact-card telegram" href="https://t.me/+447843903736">
+    <!-- FIX: t.me links don't work with phone numbers — use your Telegram username instead -->
+    <a class="contact-card telegram" href="https://t.me/AurexDominion" target="_blank">
       <div class="contact-icon">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
       </div>
       <div class="contact-info">
         <div class="contact-platform">Telegram</div>
-        <div class="contact-number">+44 7843 903736</div>
-        <div class="contact-cta">Tap to message →</div>
+        <div class="contact-number">@AurexDominion</div>
+        <div class="contact-cta">Open Telegram →</div>
       </div>
     </a>
   </div>
-
   <div class="pills" style="margin-top:2.5rem;">
     <span class="pill">Fast response</span>
     <span class="pill">Full journal available on request</span>
