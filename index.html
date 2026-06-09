@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Liquidity Sharks — Signal Portfolio</title>
+<title>Aurex Dominion — Signal Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -737,28 +737,525 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 }
 
 .contact-cta { font-size: 12px; color: var(--grey); }
+
+/* ── NAVBAR ── */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5rem;
+  height: 64px;
+  background: rgba(8,13,26,0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(201,168,76,0.12);
+}
+
+.nav-brand {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.06em;
+  color: var(--white);
+}
+
+.nav-brand span { color: var(--gold); }
+
+.nav-right { display: flex; align-items: center; gap: 12px; }
+
+.nav-chat-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(201,168,76,0.1);
+  border: 1px solid rgba(201,168,76,0.35);
+  color: var(--gold2);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  text-decoration: none;
+}
+
+.nav-chat-btn:hover {
+  background: rgba(201,168,76,0.2);
+  transform: translateY(-1px);
+}
+
+.nav-contact-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gold);
+  color: var(--navy);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 9px 20px;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  text-decoration: none;
+  border: none;
+}
+
+.nav-contact-btn:hover {
+  background: var(--gold2);
+  transform: translateY(-1px);
+}
+
+/* ── CHATBOT ── */
+.chat-bubble {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 56px; height: 56px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(201,168,76,0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: none;
+}
+
+.chat-bubble:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 28px rgba(201,168,76,0.55);
+}
+
+.chat-bubble svg { color: var(--navy); }
+
+.chat-bubble .chat-badge {
+  position: absolute;
+  top: -3px; right: -3px;
+  width: 16px; height: 16px;
+  background: #25D366;
+  border-radius: 50%;
+  border: 2px solid var(--navy);
+  animation: blink 2s infinite;
+}
+
+.chat-window {
+  position: fixed;
+  bottom: 96px;
+  right: 28px;
+  width: 360px;
+  background: var(--navy2);
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: 20px;
+  overflow: hidden;
+  z-index: 1000;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+  display: none;
+  flex-direction: column;
+  animation: slideUp 0.25s ease;
+}
+
+.chat-window.open { display: flex; }
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.chat-header {
+  background: var(--navy);
+  border-bottom: 1px solid rgba(201,168,76,0.15);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chat-header-left { display: flex; align-items: center; gap: 12px; }
+
+.chat-avatar {
+  width: 40px; height: 40px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  color: var(--navy);
+  flex-shrink: 0;
+}
+
+.chat-name { font-size: 14px; font-weight: 600; color: var(--white); }
+.chat-status { font-size: 11px; color: #25D366; display: flex; align-items: center; gap: 5px; }
+.chat-status::before { content: ''; width: 6px; height: 6px; background: #25D366; border-radius: 50%; display: inline-block; }
+
+.chat-close {
+  background: none;
+  border: none;
+  color: var(--grey);
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  padding: 4px;
+  transition: color 0.15s;
+}
+
+.chat-close:hover { color: var(--white); }
+
+.chat-messages {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+.chat-msg {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.msg-avatar {
+  width: 28px; height: 28px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 11px;
+  color: var(--navy);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.msg-bubble {
+  background: rgba(255,255,255,0.06);
+  border-radius: 0 14px 14px 14px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.88);
+  line-height: 1.6;
+  max-width: 260px;
+}
+
+.msg-bubble.user-msg {
+  background: rgba(201,168,76,0.15);
+  border-radius: 14px 0 14px 14px;
+  color: var(--gold3);
+  margin-left: auto;
+}
+
+.msg-time { font-size: 10px; color: var(--grey); margin-top: 3px; }
+
+.chat-reply {
+  background: rgba(37,211,102,0.08);
+  border: 1px solid rgba(37,211,102,0.2);
+  border-radius: 14px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.88);
+  line-height: 1.6;
+  display: none;
+}
+
+.chat-reply.show { display: block; }
+
+.chat-input-area {
+  padding: 1rem 1.25rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  gap: 8px;
+}
+
+.chat-input {
+  flex: 1;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 100px;
+  padding: 9px 16px;
+  font-size: 13px;
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.chat-input::placeholder { color: var(--grey); }
+.chat-input:focus { border-color: rgba(201,168,76,0.4); }
+
+.chat-send {
+  width: 38px; height: 38px;
+  background: var(--gold);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.15s;
+  flex-shrink: 0;
+}
+
+.chat-send:hover { background: var(--gold2); transform: scale(1.05); }
+
+.chat-footer {
+  text-align: center;
+  font-size: 10px;
+  color: var(--grey);
+  padding: 0 1.25rem 0.75rem;
+}
+
+/* push hero down for navbar */
+.hero { padding-top: 140px; }
 </style>
 </head>
 <body>
+
+<!-- ══ NAVBAR ══════════════════════════════════════════════════════════════ -->
+<nav class="navbar">
+  <div class="nav-brand">Aurex <span>Dominion</span></div>
+  <div class="nav-right">
+    <button class="nav-chat-btn" onclick="toggleChat()">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      Chat with us
+    </button>
+    <a class="nav-contact-btn" href="https://wa.me/447843903736" target="_blank">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Contact Us
+    </a>
+  </div>
+</nav>
+
+<!-- ══ CHATBOT ══════════════════════════════════════════════════════════════ -->
+<button class="chat-bubble" onclick="toggleChat()" aria-label="Open chat">
+  <div class="chat-badge"></div>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+</button>
+
+<div class="chat-window" id="chatWindow">
+  <div class="chat-header">
+    <div class="chat-header-left">
+      <div class="chat-avatar">AD</div>
+      <div>
+        <div class="chat-name">Aurex Dominion</div>
+        <div class="chat-status">Online · Usually replies instantly</div>
+      </div>
+    </div>
+    <button class="chat-close" onclick="toggleChat()">✕</button>
+  </div>
+
+  <div class="chat-messages" id="chatMessages">
+    <div class="chat-msg">
+      <div class="msg-avatar">AD</div>
+      <div>
+        <div class="msg-bubble">
+          👋 Welcome to <strong>Aurex Dominion</strong>!<br><br>
+          We provide live XAUUSD Gold signals during the New York session — <strong>82% win rate</strong> across 121 documented trades.<br><br>
+          What would you like to know? Send us a message below 👇
+        </div>
+        <div class="msg-time">Now</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chat-input-area">
+    <input class="chat-input" id="chatInput" type="text" placeholder="Type your message..." onkeydown="if(event.key==='Enter') sendMessage()">
+    <button class="chat-send" onclick="sendMessage()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0A0F1E" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+  </div>
+  <div class="chat-footer">Powered by Aurex Dominion · Replies within minutes</div>
+</div>
+
+<script>
+// ── Chat state ────────────────────────────────────────────────────────────
+const PHONE = '447843903736';
+let chatStep = 0;       // 0=initial, 1=waiting for contact, 2=done
+let userFirstMsg = '';
+let userContact  = '';
+
+function toggleChat() {
+  const win = document.getElementById('chatWindow');
+  win.classList.toggle('open');
+  if (win.classList.contains('open')) {
+    setTimeout(() => document.getElementById('chatInput').focus(), 100);
+  }
+}
+
+function addBotMsg(html, delay = 1000) {
+  return new Promise(resolve => {
+    // Typing indicator
+    const typing = document.createElement('div');
+    typing.className = 'chat-msg';
+    typing.id = 'typing-indicator';
+    typing.innerHTML = `
+      <div class="msg-avatar">AD</div>
+      <div><div class="msg-bubble" style="padding:12px 16px;">
+        <span class="typing-dots"><span></span><span></span><span></span></span>
+      </div></div>`;
+    document.getElementById('chatMessages').appendChild(typing);
+    document.getElementById('chatMessages').scrollTop = 99999;
+
+    setTimeout(() => {
+      // Remove typing indicator
+      const t = document.getElementById('typing-indicator');
+      if (t) t.remove();
+
+      // Add real message
+      const div = document.createElement('div');
+      div.className = 'chat-msg';
+      div.innerHTML = `
+        <div class="msg-avatar">AD</div>
+        <div>
+          <div class="msg-bubble">${html}</div>
+          <div class="msg-time">Just now</div>
+        </div>`;
+      document.getElementById('chatMessages').appendChild(div);
+      document.getElementById('chatMessages').scrollTop = 99999;
+      resolve();
+    }, delay);
+  });
+}
+
+function addUserMsg(text) {
+  const div = document.createElement('div');
+  div.style.cssText = 'display:flex; justify-content:flex-end; margin-bottom:4px;';
+  div.innerHTML = `<div class="msg-bubble user-msg">${text}</div>`;
+  document.getElementById('chatMessages').appendChild(div);
+  document.getElementById('chatMessages').scrollTop = 99999;
+}
+
+function updatePlaceholder(text) {
+  document.getElementById('chatInput').placeholder = text;
+}
+
+async function sendMessage() {
+  const input = document.getElementById('chatInput');
+  const msg = input.value.trim();
+  if (!msg) return;
+
+  addUserMsg(msg);
+  input.value = '';
+
+  // ── Step 0: First message received ────────────────────────────────────
+  if (chatStep === 0) {
+    userFirstMsg = msg;
+    chatStep = 1;
+
+    await addBotMsg(
+      `✅ <strong>Thank you for reaching out to Aurex Dominion!</strong><br><br>
+      We're thrilled by your interest. Our team will personally get back to you very shortly.<br><br>
+      To make sure we can reach you, could you please share your <strong>WhatsApp number</strong> or <strong>email address</strong>? 📲`,
+      1300
+    );
+    updatePlaceholder('Your WhatsApp number or email...');
+  }
+
+  // ── Step 1: Contact detail received ───────────────────────────────────
+  else if (chatStep === 1) {
+    userContact = msg;
+    chatStep = 2;
+
+    // Disable input
+    input.disabled = true;
+    input.placeholder = 'Message sent ✓';
+    document.querySelector('.chat-send').disabled = true;
+    document.querySelector('.chat-send').style.opacity = '0.4';
+
+    // Show warm thank you
+    await addBotMsg(
+      `🙏 <strong>Perfect, thank you!</strong><br><br>
+      One of our team members will be in touch with you at <strong>${userContact}</strong> very shortly.<br><br>
+      We're excited to potentially work with you and help your community grow with high-quality XAUUSD signals.<br><br>
+      <span style="color:#C9A84C; font-weight:600;">Talk soon — The Aurex Dominion Team 👑</span>`,
+      1200
+    );
+
+    // ── Send via Telegram Bot API (CORS-safe approach) ───────────────────
+    const TG_TOKEN   = '8845306916:AAGMbVfVmRuSVBZyR4YnzG53nn4WlNdH1cU';
+    const TG_CHAT_ID = '7801796825';
+
+    const now = new Date().toLocaleString('en-GB', { timeZone: 'Europe/London' });
+
+    const tgText =
+      `🔔 New Lead — Aurex Dominion Website\n\n` +
+      `📩 Their Message:\n${userFirstMsg}\n\n` +
+      `📞 Their Contact:\n${userContact}\n\n` +
+      `🕐 Time: ${now}\n` +
+      `🌐 Source: Portfolio Website Chatbot`;
+
+    // Use no-cors mode — request fires silently, no CORS error
+    // Telegram receives it even though we can't read the response
+    try {
+      const url = `https://api.telegram.org/bot${TG_TOKEN}/sendMessage`;
+      const params = new URLSearchParams({
+        chat_id: TG_CHAT_ID,
+        text: tgText
+      });
+      // Try standard fetch first
+      fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: params,
+        mode: 'no-cors'
+      });
+      // Also fire as GET via image beacon (100% CORS-safe backup)
+      const beaconUrl = `${url}?chat_id=${encodeURIComponent(TG_CHAT_ID)}&text=${encodeURIComponent(tgText)}`;
+      new Image().src = beaconUrl;
+      console.log('Lead notification fired to Telegram ✓');
+    } catch(e) {
+      console.warn('Telegram send failed:', e);
+    }
+  }
+}
+</script>
+
+<!-- typing dots CSS injected here -->
+<style>
+.typing-dots { display:inline-flex; gap:4px; align-items:center; }
+.typing-dots span {
+  width:7px; height:7px;
+  background: rgba(255,255,255,0.35);
+  border-radius:50%;
+  animation: tdot 1.2s infinite;
+}
+.typing-dots span:nth-child(2) { animation-delay:0.2s; }
+.typing-dots span:nth-child(3) { animation-delay:0.4s; }
+@keyframes tdot {
+  0%,80%,100% { transform:scale(0.6); opacity:0.4; }
+  40%          { transform:scale(1);   opacity:1; }
+}
+</style>
+
+
 
 <!-- ══ HERO ═══════════════════════════════════════════════════════════════ -->
 <section class="hero">
   <div class="live-pill"><div class="live-dot"></div>Live Signal Provider · New York Session</div>
 
   <div class="hero-title">
-    Liquidity<br><span class="gold">Sharks</span>
+    Aurex<br><span class="gold">Dominion</span>
   </div>
 
   <p class="hero-subtitle">
-    <strong>XAUUSD (Gold)</strong> signals with a documented <strong>80% win rate</strong> — 111 live trades, fully tracked from March to June 2025.
+    <strong>XAUUSD (Gold)</strong> signals with a documented <strong>82% win rate</strong> — 121 live trades, fully tracked from March to June 2025.
   </p>
 
   <div class="stats-bar">
-    <div class="stat-item"><div class="stat-num">111</div><div class="stat-label">Trades</div></div>
-    <div class="stat-item"><div class="stat-num">80%</div><div class="stat-label">Win Rate</div></div>
-    <div class="stat-item"><div class="stat-num">10,150</div><div class="stat-label">Total Pips</div></div>
-    <div class="stat-item"><div class="stat-num">91.4</div><div class="stat-label">Avg Pips</div></div>
-    <div class="stat-item"><div class="stat-num">89</div><div class="stat-label">Wins</div></div>
+    <div class="stat-item"><div class="stat-num">121</div><div class="stat-label">Trades</div></div>
+    <div class="stat-item"><div class="stat-num">82%</div><div class="stat-label">Win Rate</div></div>
+    <div class="stat-item"><div class="stat-num">11,220</div><div class="stat-label">Total Pips</div></div>
+    <div class="stat-item"><div class="stat-num">92.7</div><div class="stat-label">Avg Pips</div></div>
+    <div class="stat-item"><div class="stat-num">99</div><div class="stat-label">Wins</div></div>
     <div class="stat-item"><div class="stat-num">0</div><div class="stat-label">Red Months</div></div>
   </div>
 </section>
@@ -773,18 +1270,18 @@ tr:hover td { background: rgba(255,255,255,0.02); }
   <div class="wr-table">
     <div class="wr-row">
       <span class="wr-label">Overall</span>
+      <div class="wr-track"><div class="wr-fill" style="width:82%"></div></div>
+      <span class="wr-pct">82.0%</span>
+    </div>
+    <div class="wr-row">
+      <span class="wr-label">BUY trades</span>
       <div class="wr-track"><div class="wr-fill" style="width:80%"></div></div>
       <span class="wr-pct">80.0%</span>
     </div>
     <div class="wr-row">
-      <span class="wr-label">BUY trades</span>
-      <div class="wr-track"><div class="wr-fill" style="width:78.9%"></div></div>
-      <span class="wr-pct">78.9%</span>
-    </div>
-    <div class="wr-row">
       <span class="wr-label">SELL trades</span>
-      <div class="wr-track"><div class="wr-fill" style="width:83.3%"></div></div>
-      <span class="wr-pct">83.3%</span>
+      <div class="wr-track"><div class="wr-fill" style="width:85%"></div></div>
+      <span class="wr-pct">85.0%</span>
     </div>
     <div class="wr-row">
       <span class="wr-label">TP4 exits</span>
@@ -802,7 +1299,7 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 
   <div class="card-grid-4" style="margin-top:0.5rem;">
     <div class="mini-card">
-      <div class="stat-num" style="font-size:38px;">73</div>
+      <div class="stat-num" style="font-size:38px;">80+</div>
       <div class="stat-label">Trading Days</div>
     </div>
     <div class="mini-card">
@@ -907,7 +1404,7 @@ tr:hover td { background: rgba(255,255,255,0.02); }
       </tbody>
     </table>
   </div>
-  <p style="font-size:12px;color:var(--grey);margin-top:1rem;text-align:center;">Showing 12 of 111 documented trades · Full journal available on request</p>
+  <p style="font-size:12px;color:var(--grey);margin-top:1rem;text-align:center;">Showing 12 of 121 documented trades · Full journal available on request</p>
 </section>
 
 <!-- ══ BEST DAYS ══════════════════════════════════════════════════════════ -->
@@ -1045,7 +1542,7 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 <p class="disclaimer">
   For educational purposes only. Past performance is not indicative of future results.<br>
   Trading involves significant risk. Only trade with funds you can afford to lose.<br>
-  Liquidity Sharks · XAUUSD Gold Signals · New York Session · 2025
+  Aurex Dominion · XAUUSD Gold Signals · New York Session · 2025
 </p>
 
 </body>
