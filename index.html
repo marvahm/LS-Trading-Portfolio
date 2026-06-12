@@ -257,7 +257,8 @@ tr:hover td { background: rgba(255,255,255,0.02); }
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
       Chat with us
     </button>
-    <a class="nav-contact-btn" href="https://wa.me/447843903736" target="_blank">
+    <!-- CHANGED: WhatsApp number updated to +447494652363 -->
+    <a class="nav-contact-btn" href="https://wa.me/447494652363" target="_blank">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       Contact Us
     </a>
@@ -305,7 +306,7 @@ tr:hover td { background: rgba(255,255,255,0.02); }
 </div>
 
 <script>
-const PHONE = '447843903736';
+const PHONE = '447494652363';
 let chatStep = 0;
 let userFirstMsg = '';
 let userContact  = '';
@@ -398,8 +399,6 @@ async function sendMessage() {
       1200
     );
 
-    // ── Telegram Notification ─────────────────────────────────────────────
-    // IMPORTANT: Replace YOUR_NEW_BOT_TOKEN with your token from BotFather
     const TG_TOKEN   = '8845306916:AAGMbVfVmRuSVBZyR4YnzG53nn4WlNdH1cU';
     const TG_CHAT_ID = '-1004287333946';
 
@@ -467,7 +466,8 @@ async function sendMessage() {
   <br><br>
   <div class="card-grid-4" style="margin-top:0.5rem;">
     <div class="mini-card"><div class="stat-num" style="font-size:38px;">80+</div><div class="stat-label">Trading Days</div></div>
-    <div class="mini-card"><div class="stat-num" style="font-size:38px;">−70</div><div class="stat-label">Fixed Max Loss</div></div>
+    <!-- CHANGED: Fixed Max Loss updated to reflect 40-50 pip SL -->
+    <div class="mini-card"><div class="stat-num" style="font-size:38px;">−50</div><div class="stat-label">Max Stop Loss</div></div>
     <div class="mini-card"><div class="stat-num" style="font-size:38px;">5</div><div class="stat-label">TP Levels Per Signal</div></div>
     <div class="mini-card"><div class="stat-num" style="font-size:38px;">100%</div><div class="stat-label">Days Documented</div></div>
   </div>
@@ -478,16 +478,19 @@ async function sendMessage() {
   <div class="sec-tag">Session Coverage</div>
   <div class="sec-title">New York Session Specialist</div>
   <div class="gold-rule"></div>
-  <p class="sec-body">All signals called live during the New York session — the highest-volume period for Gold. Entries typically between 2pm–8pm BST.</p>
+  <!-- CHANGED: Session times updated to 2:30pm–8:30pm BST -->
+  <p class="sec-body">All signals called live during the New York session — the highest-volume period for Gold. Entries typically between 2:30pm–8:30pm BST.</p>
   <div class="session-wrap">
     <div class="times-list">
       <div class="time-row"><div class="tdot off"></div><div class="ttext"><strong>London Open</strong> — 8am BST · Pre-session watch</div></div>
       <div class="time-row"><div class="tdot off"></div><div class="ttext"><strong>NY Pre-market</strong> — 1pm BST · Setup scanning</div></div>
-      <div class="time-row"><div class="tdot on"></div><div class="ttext"><strong>NY Session LIVE</strong> — 2pm–8pm BST · Signals active 🟢</div></div>
-      <div class="time-row"><div class="tdot off"></div><div class="ttext"><strong>Late session</strong> — 8pm–10pm BST · Occasional setups</div></div>
+      <!-- CHANGED: Session times updated -->
+      <div class="time-row"><div class="tdot on"></div><div class="ttext"><strong>NY Session LIVE</strong> — 2:30pm–8:30pm BST · Signals active 🟢</div></div>
+      <div class="time-row"><div class="tdot off"></div><div class="ttext"><strong>Late session</strong> — 8:30pm–10pm BST · Occasional setups</div></div>
     </div>
     <div class="highlight-box">
-      <h3>2pm – 6pm BST</h3>
+      <!-- CHANGED: Peak window updated -->
+      <h3>2:30pm – 6pm BST</h3>
       <p>Peak window. 80%+ win rate. London &amp; New York overlap — maximum institutional volume, cleanest price action, sharpest entries. This is where the edge lives.</p>
     </div>
   </div>
@@ -498,14 +501,16 @@ async function sendMessage() {
   <div class="sec-tag">Signal Format</div>
   <div class="sec-title">Clear. Structured. Actionable.</div>
   <div class="gold-rule"></div>
-  <p class="sec-body">Every signal delivered with precise entry zone, fixed stop loss, and 5 take profit targets. No ambiguity, no vague levels.</p>
+  <!-- CHANGED: SL description updated to reflect tight 40-50 pip stops -->
+  <p class="sec-body">Every signal delivered with precise entry zone, tight 40–50 pip stop loss, and 5 take profit targets. No ambiguity, no vague levels.</p>
   <div class="signal-wrap">
     <div class="signal-head">Sample Signal</div>
     <div class="signal-body">
       <div class="em">💡 TRADE IDEA ⤵️</div>
       <div>📈 BUY XAUUSD (GOLD)</div>
       <div>📍 Entry: <span class="em">4538 – 4540</span></div>
-      <div>🛑 Stop Loss: <span class="bad">4532</span></div>
+      <!-- CHANGED: SL updated to reflect ~45 pip stop -->
+      <div>🛑 Stop Loss: <span class="bad">4495</span></div>
       <div>🎯 TP1: 4542</div>
       <div>🎯 TP2: 4544</div>
       <div>🎯 TP3: 4546</div>
@@ -569,11 +574,13 @@ async function sendMessage() {
   <div class="gold-rule"></div>
   <div class="feat-grid">
     <div class="feat-card"><div class="feat-icon">📍</div><div class="feat-title">Precise Entry Zones</div><div class="feat-desc">Tight 2–3 pip entry ranges — not vague levels or zones.</div></div>
-    <div class="feat-card"><div class="feat-icon">🛑</div><div class="feat-title">Fixed Stop Loss</div><div class="feat-desc">Every signal has a defined SL. Maximum loss always known upfront.</div></div>
+    <!-- CHANGED: SL description updated -->
+    <div class="feat-card"><div class="feat-icon">🛑</div><div class="feat-title">Tight Stop Loss</div><div class="feat-desc">40–50 pip stop loss on every signal. Maximum risk always defined upfront.</div></div>
     <div class="feat-card"><div class="feat-icon">🎯</div><div class="feat-title">5 TP Levels</div><div class="feat-desc">TP1–TP5 on every signal. Scale out or let it run open.</div></div>
     <div class="feat-card"><div class="feat-icon">📢</div><div class="feat-title">Live Updates</div><div class="feat-desc">TP hits, SL alerts, and trade management posted in real time.</div></div>
     <div class="feat-card"><div class="feat-icon">📁</div><div class="feat-title">Full Trade Journal</div><div class="feat-desc">Every trade documented since day one — complete transparency.</div></div>
-    <div class="feat-card"><div class="feat-icon">⏰</div><div class="feat-title">NY Session Only</div><div class="feat-desc">Peak signals 2pm–8pm BST. Consistent timing, every day.</div></div>
+    <!-- CHANGED: Session time updated -->
+    <div class="feat-card"><div class="feat-icon">⏰</div><div class="feat-title">NY Session Only</div><div class="feat-desc">Peak signals 2:30pm–8:30pm BST. Consistent timing, every day.</div></div>
   </div>
 </section>
 
@@ -613,7 +620,8 @@ async function sendMessage() {
         <li>✅ Full signal format — Entry, SL, TP1–TP5</li>
         <li>✅ Real-time TP hit &amp; SL notifications</li>
         <li>✅ XAUUSD (Gold) specialist signals</li>
-        <li>✅ 2pm – 8pm BST coverage</li>
+        <!-- CHANGED: Session time updated -->
+        <li>✅ 2:30pm – 8:30pm BST coverage</li>
         <li>✅ Automated setup by our support team</li>
         <li>✅ Full trade journal transparency</li>
       </ul>
@@ -629,17 +637,17 @@ async function sendMessage() {
   <div class="gold-rule"></div>
   <p class="sec-body">Reach us directly on WhatsApp or Telegram. We respond fast and can have your channel set up and live quickly.</p>
   <div class="contact-grid">
-    <a class="contact-card whatsapp" href="https://wa.me/447843903736" target="_blank">
+    <!-- CHANGED: WhatsApp number updated to +447494652363 -->
+    <a class="contact-card whatsapp" href="https://wa.me/447494652363" target="_blank">
       <div class="contact-icon">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       </div>
       <div class="contact-info">
         <div class="contact-platform">WhatsApp</div>
-        <div class="contact-number">+44 7843 903736</div>
+        <div class="contact-number">+44 7494 652363</div>
         <div class="contact-cta">Tap to message →</div>
       </div>
     </a>
-    <!-- FIX: t.me links don't work with phone numbers — use your Telegram username instead -->
     <a class="contact-card telegram" href="https://t.me/AurexDominion" target="_blank">
       <div class="contact-icon">
         <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
